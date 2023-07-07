@@ -4,11 +4,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import ImgMediaCard from './ImgMediaCard';
 
 export default function ControlledAccordions() {
     const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -32,22 +28,7 @@ export default function ControlledAccordions() {
                     <Typography sx={{ color: 'text.secondary' }}>short tags here</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            sx={{ height: 140 }}
-                            image="/static/images/cards/placeholder.jpg"
-                            title="alt text"
-                        />
-                        <CardContent>
-                            <Typography variant="body2" color="text.secondary">
-                                description here
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Location</Button>
-                            <Button size="small">Contact</Button>
-                        </CardActions>
-                    </Card>
+                    <ImgMediaCard />
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -56,17 +37,13 @@ export default function ControlledAccordions() {
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Users</Typography>
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Org2</Typography>
                     <Typography sx={{ color: 'text.secondary' }}>
-                        You are currently not an owner
+                        desc2
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
-                        Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus,
-                        varius pulvinar diam eros in elit. Pellentesque convallis laoreet
-                        laoreet.
-                    </Typography>
+                <ImgMediaCard />
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -76,32 +53,14 @@ export default function ControlledAccordions() {
                     id="panel3bh-header"
                 >
                     <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                        Advanced settings
+                        Org3
                     </Typography>
                     <Typography sx={{ color: 'text.secondary' }}>
-                        Filtering has been entirely disabled for whole web server
+                        desc3
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                        amet egestas eros, vitae egestas augue. Duis vel est augue.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel4bh-content"
-                    id="panel4bh-header"
-                >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Personal data</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                        amet egestas eros, vitae egestas augue. Duis vel est augue.
-                    </Typography>
+                <ImgMediaCard />
                 </AccordionDetails>
             </Accordion>
         </div>
