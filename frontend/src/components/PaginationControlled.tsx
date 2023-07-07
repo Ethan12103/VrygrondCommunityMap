@@ -9,8 +9,25 @@ export default function PaginationControlled() {
   };
 
   return (
-    <Stack spacing={2}>
-      <Pagination count={10} page={page} onChange={handleChange} hidePrevButton hideNextButton/>
-    </Stack>
+    <div style={{
+      position: 'relative',
+      paddingBottom: '10px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      height: '100px', // Set the height of the container as needed
+    }}>
+      <Pagination
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+        }}
+        count={10}
+        page={page}
+        onChange={handleChange}
+        hidePrevButton
+        hideNextButton
+      />
+    </div>
   );
 }

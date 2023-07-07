@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 export default function ImgMediaCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardMedia
         sx={{ height: 140 }}
         image="/static/images/cards/placeholder.jpg"
