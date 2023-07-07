@@ -4,8 +4,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import ProTip from './ProTip';
-import ControlledAccordions from './components/ControlledAccordions'
-import PaginationControlled from './components/PaginationControlled'
+import ResultPanel from './components/ResultPanel';
 
 function Copyright() {
   return (
@@ -27,8 +26,7 @@ export default function App() {
           Material UI Create React App example in TypeScript
         </Typography>
         <ProTip />
-        <ControlledAccordions />
-        <PaginationControlled />
+        <ResultPanel />
         <Copyright />
       </Box>
     </Container>
