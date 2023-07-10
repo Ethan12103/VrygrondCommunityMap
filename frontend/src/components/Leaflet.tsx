@@ -6,7 +6,7 @@ import {
   Popup,
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import osm from '../osm-providers';
+import osm from './osm-providers';
 import L from 'leaflet';
 
 const center: [number, number] = [-34.083, 18.488];

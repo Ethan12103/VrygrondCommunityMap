@@ -6,6 +6,7 @@ import Link from '@mui/material/Link';
 import ProTip from './ProTip';
 import { ToggleButtonMenu } from './components/Sidebar';
 import { LeafletMap } from './components/Leaflet';
+import { MuiDrawer } from './components/MuiDrawer';
 
 function Copyright() {
   return (
@@ -22,10 +23,8 @@ function Copyright() {
 export default function App() {
   return (
     <Container maxWidth="sm">
+      <MuiDrawer />
       <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          <ToggleButtonMenu />
-        </Typography>
         <LeafletMap/>
         <ProTip />
         <Copyright />
