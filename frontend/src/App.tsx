@@ -8,6 +8,7 @@ import ProTip from './ProTip';
 import { ToggleButtonMenu } from './components/Sidebar';
 import { LeafletMap } from './components/Leaflet';
 import { MuiDrawer } from './components/MuiDrawer';
+import ResultPanel from './components/ResultPanel';
 
 function Copyright() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
       <Box sx={{ my: 4 }} justifyContent="flex-end">
         <LeafletMap />
         <ProTip />
+        <ResultPanel />
         <Copyright />
       </Box>
     </Container>
