@@ -21,7 +21,8 @@
     "@types/node": "latest",
     "leaflet": "latest",
     "react-leaflet": "latest",
-    "web-vitals": "latest"
+    "web-vitals": "latest",
+    "@mui/system": "latest"
   },
   "devDependencies": {
     "@types/leaflet": "latest"
