@@ -10,7 +10,7 @@ import { MuiDrawer } from './MuiDrawer';
 export const ButtonAppBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="secondary">
+        <AppBar position="static" sx={{ backgroundImage: 'linear-gradient(to right, lightgreen, darkblue)' }}>
             <Toolbar>
                 <MuiDrawer />
                 <IconButton size="large" edge="start" color="inherit">
