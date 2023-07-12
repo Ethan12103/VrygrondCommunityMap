@@ -52,8 +52,8 @@ export default function SwipeableEdgeDrawer() {
                     },
                 }}
             />
-            <Box sx={{ textAlign: 'center', pt: 1 }}>
-                <Button onClick={toggleDrawer(true)}>Update & Search</Button>
+            <Box sx={{ textAlign: 'center', pt: 1, backgroundImage: 'linear-gradient(to right, lightgreen, darkblue)' }}>
+                <Button onClick={toggleDrawer(true)} sx={{ color: 'white' }}>Update & Search</Button>
             </Box>
             <SwipeableDrawer
                 anchor={"bottom"}
