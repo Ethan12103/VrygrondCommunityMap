@@ -61,7 +61,6 @@ export default function SwipeableEdgeDrawer() {
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}
                 swipeAreaWidth={drawerBleeding}
-                disableSwipeToOpen={!isMobile}
                 ModalProps={{
                     keepMounted: true,
                 }}
