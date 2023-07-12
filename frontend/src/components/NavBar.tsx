@@ -9,7 +9,7 @@ import { MuiDrawer } from './MuiDrawer';
 
 export const ButtonAppBar = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, marginLeft: 0, marginRight: 0, paddingLeft: "0px", paddingRight: "0px"}}>
         <AppBar position="static" color="secondary">
             <Toolbar>
                 <MuiDrawer />

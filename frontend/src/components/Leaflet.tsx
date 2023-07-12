@@ -22,9 +22,11 @@ export const LeafletMap: React.FC = () => {
       center={center}
       zoom={16}
       style={{
-        width: 'calc(100% - 36px)',
-        height: 'calc(100% - 50px)',
         position: 'absolute',
+        top: 67,
+        left: 0,
+        right: 0,
+        bottom: 0,
         zIndex: 0
       }}
     >
