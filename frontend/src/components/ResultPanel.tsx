@@ -12,13 +12,6 @@ import PaginationControlled from './PaginationControlled'
 
 const drawerBleeding = 56;
 
-interface Props {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window?: () => Window;
-}
 
 const Root = styled('div')(({ theme }) => ({
     height: '100%',
@@ -40,8 +33,7 @@ const Puller = styled(Box)(({ theme }) => ({
     left: 'calc(50% - 15px)',
 }));
 
-export default function SwipeableEdgeDrawer(props: Props) {
-    const { window } = props;
+export default function SwipeableEdgeDrawer() {
     const [open, setOpen] = React.useState(false);
 
     const toggleDrawer = (newOpen: boolean) => () => {
@@ -49,7 +41,6 @@ export default function SwipeableEdgeDrawer(props: Props) {
     };
 
     // This is used only for the example
-    const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
         <Root>
@@ -63,10 +54,9 @@ export default function SwipeableEdgeDrawer(props: Props) {
                 }}
             />
             <Box sx={{ textAlign: 'center', pt: 1 }}>
-                <Button onClick={toggleDrawer(true)}>Open</Button>
+                <Button onClick={toggleDrawer(true)}>Update & Search</Button>
             </Box>
             <SwipeableDrawer
-                container={container}
                 anchor="bottom"
                 open={open}
                 onClose={toggleDrawer(false)}

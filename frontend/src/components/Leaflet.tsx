@@ -13,7 +13,7 @@ const center: [number, number] = [-34.083, 18.488];
 const position: [number, number] = [-34.0835, 18.48778];
 const markerIcon = new L.Icon({
   iconUrl: require('./images/marker.png'),
-  iconSize: [28, 35],
+  iconSize: [22, 35],
 });
 
 export const LeafletMap: React.FC = () => { 
@@ -21,7 +21,7 @@ export const LeafletMap: React.FC = () => {
     <MapContainer
       center={center}
       zoom={16}
-      style={{ width: '50vw', height: '87vh' }}
+      style={{ width: '90vw', height: '93vh' }}
     >
       <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution} />
       <Marker position={position} icon={markerIcon}>
