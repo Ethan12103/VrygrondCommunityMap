@@ -25,6 +25,7 @@
     "@mui/system": "latest"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "latest",
     "@types/leaflet": "latest"
   },
   "scripts": {
