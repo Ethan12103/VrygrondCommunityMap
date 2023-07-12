@@ -18,7 +18,7 @@ export default function App() {
       zIndex: 0
     }}>
       <ButtonAppBar />
-      <Box justifyContent="flex-end" sx={{ border: 1, borderColor: 'primary.main' }}>
+      <Box justifyContent="flex-end" sx={{ border: 1, borderColor: 'black' }}>
         <LeafletMap />
       </Box>
     </Container>

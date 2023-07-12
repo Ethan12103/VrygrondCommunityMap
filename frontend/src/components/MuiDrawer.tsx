@@ -36,7 +36,7 @@ export const MuiDrawer = () => {
                     color='inherit'
                     aria-label='close'
                     onClick={handleCloseDrawer}
-                    style={{ position: 'absolute', top: 8, right: 8 }}
+                    style={{ position: 'absolute', top: 8, right: 8, color:'black' }}
                 >
                     <CloseIcon />
                 </IconButton>
