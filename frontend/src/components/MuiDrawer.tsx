@@ -1,5 +1,5 @@
 import { Drawer, useMediaQuery, IconButton } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { ToggleButtonMenu } from './Sidebar';
 import ResultPanel from './ResultPanel';
@@ -13,7 +13,7 @@ export const MuiDrawer = () => {
     return (
         <>
             <IconButton size='large' edge='start' color='inherit' aria-label='logo' onClick={() => setIsDrawerOpen(true)}>
-                <MenuIcon />
+                <SearchIcon />
             </IconButton>
             <Drawer
                 anchor={'left'}
