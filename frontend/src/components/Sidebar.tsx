@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { styled } from '@mui/system';
+import { MuiDrawer } from './MuiDrawer';
 
 const Container = styled('div')({
   display: 'flex',
