@@ -22,7 +22,8 @@
     "leaflet": "latest",
     "react-leaflet": "latest",
     "web-vitals": "latest",
-    "@mui/system": "latest"
+    "@mui/system": "latest",
+    "mongodb": "^5.6.0"
   },
   "devDependencies": {
     "@types/leaflet": "latest"
