@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { ToggleButtonMenu } from './Sidebar';
 import ResultPanel from './ResultPanel';
+import RenderGroup from "./SearchPanel";
 import { useTheme } from '@mui/system';
 
 export const MuiDrawer = () => {
@@ -28,6 +29,7 @@ export const MuiDrawer = () => {
                     style: isMobile ? { width: '100%', flexShrink: 0 } : { position: 'absolute', left: 0, width: '400px', maxWidth: '400px' }
                 }}
             >
+                <RenderGroup />
                 <ToggleButtonMenu />
                 <ResultPanel />
                 <IconButton
