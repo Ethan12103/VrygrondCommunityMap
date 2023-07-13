@@ -6,6 +6,7 @@ import { ToggleButtonMenu } from './Sidebar';
 import ResultPanel from './ResultPanel';
 import RenderGroup from "./SearchPanel";
 import { useTheme } from '@mui/system';
+import Box from '@mui/material/Box';
 
 export const MuiDrawer = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(true);
@@ -26,19 +27,31 @@ export const MuiDrawer = () => {
                 open={isDrawerOpen}
                 onClose={handleCloseDrawer}
                 PaperProps={{
-                    style: isMobile ? { width: '100%', flexShrink: 0 } : { position: 'absolute', left: 0, width: '400px', maxWidth: '400px' }
+                    style: isMobile ? { width: '100%', flexShrink: 0, height: '91vh' } : { position: 'absolute', left: 0, width: '400px', maxWidth: '400px', height: '92vh' }
                 }}
             >
                 <RenderGroup />
-                <ToggleButtonMenu />
-                <ResultPanel />
+                <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    p: 1,
+                    backgroundColor: 'black',
+                }}
+                >
+                    <ResultPanel />
+                </Box>
                 <IconButton
                     size='large'
                     edge='end'
                     color='inherit'
                     aria-label='close'
                     onClick={handleCloseDrawer}
-                    style={{ position: 'absolute', top: 8, right: 8, color:'black' }}
+                    style={{ position: 'absolute', top: 8, right: 20, color: 'black' }}
                 >
                     <CloseIcon />
                 </IconButton>
