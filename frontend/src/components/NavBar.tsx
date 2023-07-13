@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { MuiDrawer } from './MuiDrawer';
+import HelpPage from './HelpPage';
 
 export const ButtonAppBar = () => {
   return (
@@ -13,9 +14,7 @@ export const ButtonAppBar = () => {
       <AppBar position="static" sx={{ color: 'white', backgroundColor: 'black' }}>
         <Toolbar>
           <MuiDrawer />
-          <IconButton size="large" edge="start" color="inherit">
-            <HelpOutlineIcon />
-          </IconButton>
+          <HelpPage />
           <Typography variant="h6" component="div" sx={{
             flexGrow: 1,
             textAlign: "center",
