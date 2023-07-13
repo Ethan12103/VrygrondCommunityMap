@@ -1,22 +1,48 @@
-import { Drawer, Box, Typography, IconButton } from "@mui/material"
-import MenuIcon from '@mui/icons-material/Menu'
-import { useState } from 'react'
+import { Drawer, useMediaQuery, IconButton } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
 import { ToggleButtonMenu } from './Sidebar';
 import ResultPanel from './ResultPanel';
 import RenderGroup from "./SearchPanel";
+import { useTheme } from '@mui/system';
 
 export const MuiDrawer = () => {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const handleCloseDrawer = () => {
+        setIsDrawerOpen(false);
+    };
+
     return (
         <>
-        <IconButton size='large' edge='start' color='inherit' aria-label='logo' onClick={() => setIsDrawerOpen(true)}>
-            <MenuIcon />
-        </IconButton>
-        <Drawer anchor='left' open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-            <RenderGroup />
-            <ToggleButtonMenu />
-            <ResultPanel />
-        </Drawer>
+            <IconButton size='large' edge='start' color='inherit' aria-label='logo' onClick={() => setIsDrawerOpen(true)}>
+                <SearchIcon />
+            </IconButton>
+            <Drawer
+                anchor={'left'}
+                open={isDrawerOpen}
+                onClose={handleCloseDrawer}
+                PaperProps={{
+                    style: isMobile ? { width: '100%', flexShrink: 0 } : { position: 'absolute', left: 0, width: '400px', maxWidth: '400px' }
+                }}
+            >
+                <RenderGroup />
+                <ToggleButtonMenu />
+                <ResultPanel />
+                <IconButton
+                    size='large'
+                    edge='end'
+                    color='inherit'
+                    aria-label='close'
+                    onClick={handleCloseDrawer}
+                    style={{ position: 'absolute', top: 8, right: 8, color:'black' }}
+                >
+                    <CloseIcon />
+                </IconButton>
+            </Drawer>
         </>
-    )
-}
+    );
+};

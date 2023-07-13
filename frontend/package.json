@@ -26,6 +26,7 @@
     "mongodb": "^5.6.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "latest",
     "@types/leaflet": "latest"
   },
   "scripts": {

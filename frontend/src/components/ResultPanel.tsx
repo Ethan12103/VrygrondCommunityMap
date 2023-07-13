@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Global } from '@emotion/react';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import { grey } from '@mui/material/colors';
 import Button from '@mui/material/Button';
@@ -11,7 +12,6 @@ import ControlledAccordions from './ControlledAccordions'
 import PaginationControlled from './PaginationControlled'
 
 const drawerBleeding = 56;
-
 
 const Root = styled('div')(({ theme }) => ({
     height: '100%',
@@ -34,14 +34,13 @@ const Puller = styled(Box)(({ theme }) => ({
 }));
 
 export default function SwipeableEdgeDrawer() {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
 
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
     };
-
-    // This is used only for the example
-
     return (
         <Root>
             <CssBaseline />
@@ -53,18 +52,20 @@ export default function SwipeableEdgeDrawer() {
                     },
                 }}
             />
-            <Box sx={{ textAlign: 'center', pt: 1 }}>
-                <Button onClick={toggleDrawer(true)}>Update & Search</Button>
+            <Box sx={{ textAlign: 'center', pt: 1, backgroundColor: 'black' }}>
+                <Button onClick={toggleDrawer(true)} sx={{ color: 'white' }}>Update & Search</Button>
             </Box>
             <SwipeableDrawer
-                anchor="bottom"
+                anchor={"bottom"}
                 open={open}
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}
                 swipeAreaWidth={drawerBleeding}
-                disableSwipeToOpen={false}
                 ModalProps={{
                     keepMounted: true,
+                }}
+                PaperProps={{
+                    style: isMobile ? {} : { position: 'absolute', left: 0, width: 'auto', maxWidth: '400px' }
                 }}
             >
                 <StyledBox
