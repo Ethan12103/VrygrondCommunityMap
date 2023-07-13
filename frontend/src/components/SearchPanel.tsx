@@ -4,13 +4,22 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 export default function ComboBox() {
   return (
-    <Autocomplete
+    <div>
+      <Autocomplete
       disablePortal
       id="combo-box-demo"
       options={top100Films}
       sx={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="What do you need?" />}
     />
+      <Autocomplete
+      disablePortal
+      id="combo-box-demo"
+      options={top100Films}
+      sx={{ width: 300 }}
+      renderInput={(params) => <TextField {...params} label="What organisation?" />}
+    />
+    </div>
   );
 }
 
