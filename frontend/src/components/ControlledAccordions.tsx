@@ -38,11 +38,16 @@ export default function ControlledAccordions() {
                             {item['Organisation']}
                         </Typography>
                         <Typography sx={{ color: "text.secondary" }}>
-                            short tags here
+                        {item['Category']}
                         </Typography>
                     </AccordionSummary>
-                    <AccordionDetails>
-                        <ImgMediaCard />
+                    <AccordionDetails key={`panel${index + 1}`}>
+                        <ImgMediaCard
+                            imgURL={item.imgURL}
+                            description={item.description}
+                            location={item.location}
+                            phoneNumber={item.phoneNumber}
+                        />
                     </AccordionDetails>
                 </Accordion>
             ))}
