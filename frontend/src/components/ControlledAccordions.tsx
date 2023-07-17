@@ -8,6 +8,13 @@ import ImgMediaCard from './ImgMediaCard';
 
 export default function ControlledAccordions() {
     const [expanded, setExpanded] = React.useState<string | false>(false);
+    const [data, setData] = React.useState<any[]>([]);
+
+    React.useEffect(() => {
+        fetch("http://localhost:8000")
+            .then((response) => response.json())
+            .then((data) => setData(data));
+    }, []);
 
     const handleChange =
         (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -16,53 +23,29 @@ export default function ControlledAccordions() {
 
     return (
         <div>
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1bh-content"
-                    id="panel1bh-header"
+            {data.map((item, index) => (
+                <Accordion
+                    expanded={expanded === `panel${index + 1}`}
+                    onChange={handleChange(`panel${index + 1}`)}
+                    key={`panel${index + 1}`}
                 >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                        Organization Name
-                    </Typography>
-                    <Typography sx={{ color: 'text.secondary' }}>short tags here</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <ImgMediaCard />
-                </AccordionDetails>
-            </Accordion>
-            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2bh-content"
-                    id="panel2bh-header"
-                >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Org2</Typography>
-                    <Typography sx={{ color: 'text.secondary' }}>
-                        desc2
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                <ImgMediaCard />
-                </AccordionDetails>
-            </Accordion>
-            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel3bh-content"
-                    id="panel3bh-header"
-                >
-                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                        Org3
-                    </Typography>
-                    <Typography sx={{ color: 'text.secondary' }}>
-                        desc3
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                <ImgMediaCard />
-                </AccordionDetails>
-            </Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls={`panel${index + 1}bh-content`}
+                        id={`panel${index + 1}bh-header`}
+                    >
+                        <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                            {item['Organisation']}
+                        </Typography>
+                        <Typography sx={{ color: "text.secondary" }}>
+                            short tags here
+                        </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ImgMediaCard />
+                    </AccordionDetails>
+                </Accordion>
+            ))}
         </div>
     );
 }

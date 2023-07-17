@@ -11,6 +11,8 @@ const { MongoClient } = require("mongodb");
 const express = require("express");
 const app = express();
 const fs = require('fs');
+const cors = require('cors');
+app.use(cors());
 
 // Connect to your Atlas cluster
 const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
