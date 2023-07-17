@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+import { styled, createTheme } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -18,7 +18,14 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     padding: theme.spacing(1),
   },
 }));
-
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      '-apple-system',
+    ].join(','),
+    fontSize: 12,
+  },
+});
 export interface DialogTitleProps {
   id: string;
   children?: React.ReactNode;
@@ -70,22 +77,40 @@ export default function HelpPage() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          How to Use the Map
+          <Typography variant="h1" fontSize={25} fontWeight={"bold"} gutterBottom>
+            How to Use the Map
+          </Typography>
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
+          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+            Step 1:
           </Typography>
-          <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+          <Typography fontSize={15} gutterBottom>
+            Click on the search icon in the top right corner to open the search panel
           </Typography>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
-            magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec
-            ullamcorper nulla non metus auctor fringilla.
+          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+            Step 2:
+          </Typography>
+          <Typography fontSize={15} gutterBottom>
+            Choose the "Organisations" box to search for specific organisations. Choose the "Categories" box to search for all organisations within a category.
+          </Typography>
+          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+            Step 3:
+          </Typography>
+          <Typography fontSize={15} gutterBottom>
+            Select a organisation/category and click "Update & Search". To search for all organisations leave both boxes blank.
+          </Typography>
+          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+            Step 4:
+          </Typography>
+          <Typography fontSize={15} gutterBottom>
+            Scroll through organisations to find one that you need. Click on organisation to read more information about it.
+          </Typography>
+          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+            Step 5:
+          </Typography>
+          <Typography fontSize={15} gutterBottom>
+            To find the location of the organisation on the map click on the pin icon in the bottom left of the organisation information box.
           </Typography>
         </DialogContent>
       </BootstrapDialog>
