@@ -14,7 +14,7 @@ const fs = require('fs');
 const cors = require('cors');
 app.use(cors());
 
-// Connect to your Atlas cluster
+// Connect to your Atlas clusterv
 const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
 const client = new MongoClient(uri);
 
@@ -26,21 +26,39 @@ async function run() {
         // Define pipeline
         const agg = [
             // The string next to "query" needs to be input from the user
-            {$search: { text: {query: "school", path: ["Catagories", "Organisation"] }}},
-            {$project: {_id: 0, Organisation: 1}}
+            {$search: { text: {query: "school", path: ["Name", "Services"] }}},
+            {$project: {_id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1, 
+            "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1}}
         ];
+
         // Run pipeline
         let cursor = coll.aggregate(agg);
-        const results = await cursor.toArray();
+
+        const resultArray = [];
+
+        try {
+            while (await cursor.hasNext()) {
+                const document = await cursor.next();
+                const documentArray = Object.values(document);
+                resultArray.push(documentArray);
+            }
+
+        } catch (err) {
+            console.error('Error iterating through the cursor:', err);
+        }
+
+        const results = JSON.stringify(resultArray);
 
         // Create loop to index through each object element to remove "Organisation"
         if (results.length > 0) {
             console.log("FOUND");
+            // Comment or uncomment next line of code as needed
             console.log(results);
         }
         else {
             console.log("NONE");
         }
+        
         app.get("/", (req, res) => {
             res.send(results);
         });
@@ -48,9 +66,10 @@ async function run() {
         const PORT = process.env.PORT || 8000;
         
         app.listen(PORT, console.log(`Server started on port ${PORT}`));
-
+        
     } finally {
         await client.close();
+        console.log("Connection Closed");
     }  
 
 }
