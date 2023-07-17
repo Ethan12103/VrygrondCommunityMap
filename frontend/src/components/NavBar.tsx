@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { MuiDrawer } from './MuiDrawer';
 import HelpPage from './HelpPage';
+import ProblemForm from './ProblemPage';
 
 export const ButtonAppBar = () => {
   return (
@@ -31,6 +32,7 @@ export const ButtonAppBar = () => {
           }}>
             Vrygrond Trust Community Map
           </Typography>
+          <ProblemForm/>
         </Toolbar>
       </AppBar>
     </Box>

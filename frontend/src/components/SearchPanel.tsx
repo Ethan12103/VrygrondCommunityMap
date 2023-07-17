@@ -9,34 +9,35 @@ export default function ComboBox() {
       disablePortal
       id="combo-box-demo"
       options={top100Films}
-      sx={{ width: 300 }}
+      sx={{ width: 300, padding: '10px'}}
       renderInput={(params) => <TextField {...params} label="What organisation?" />}
     />
       <Autocomplete
       disablePortal
+      multiple
       id="combo-box-demo"
-      options={top100Films}
-      sx={{ width: 300 }}
+      options={categories}
+      sx={{ width: 300, padding: '10px' }}
       renderInput={(params) => <TextField {...params} label="What category?" />}
     />
     </div>
   );
 }
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
-  { label: 'The Shawshank Redemption', year: 1994 },
-  { label: 'The Godfather', year: 1972 },
-  { label: 'The Godfather: Part II', year: 1974 },
-  { label: 'The Dark Knight', year: 2008 },
-  { label: '12 Angry Men', year: 1957 },
-  { label: "Schindler's List", year: 1993 },
-  { label: 'Pulp Fiction', year: 1994 },
+  { label: 'Capricorn Hyper Care', year: 1994 },
+  { label: 'Ben Bikes', year: 1972 },
+  { label: 'Cape Times Fresh Air Fund', year: 1974 },
+  { label: 'Artscape', year: 2008 },
+  { label: 'Carel du Toit Center', year: 1957 },
+  { label: "Chrysalis Academy", year: 1993 },
+  { label: 'Dominican School for the Deaf', year: 1994 },
   {
-    label: 'The Lord of the Rings: The Return of the King',
+    label: 'Jo\'s School',
     year: 2003,
   },
-  { label: 'The Good, the Bad and the Ugly', year: 1966 },
+  { label: 'Law For All', year: 1966 },
+  /*
   { label: 'Fight Club', year: 1999 },
   {
     label: 'The Lord of the Rings: The Fellowship of the Ring',
@@ -149,4 +150,13 @@ const top100Films = [
   { label: 'Snatch', year: 2000 },
   { label: '3 Idiots', year: 2009 },
   { label: 'Monty Python and the Holy Grail', year: 1975 },
+  */
+];
+const categories = [
+  { label: 'Food' },
+  { label: 'Clothing' },
+  { label: 'School' },
+  { label: 'Library' },
+  { label: 'Abuse Center' },
+  { label: 'Computer Lab' },
 ];
