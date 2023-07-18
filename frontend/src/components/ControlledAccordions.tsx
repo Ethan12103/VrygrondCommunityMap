@@ -30,37 +30,68 @@ const filterServices = (services: string[], maxLength: number) => {
 
 const ITEMS_PER_PAGE = 3;
 
-export default function ControlledAccordions() {
+const ControlledAccordions = () => {
     const [expanded, setExpanded] = useState<string | false>(false);
     const [data, setData] = useState<ItemData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         fetch('http://localhost:8000/')
-            .then(response => response.json())
+            .then((response) => response.json())
             .then((data) => {
-                // Convert the array of arrays into array of objects
-                setData(data.map((org: any[]) => Object.fromEntries(org)))
+                setData(data.map((org: any[]) => Object.fromEntries(org)));
             });
     }, []);
 
-    const handleChange =
-        (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-            setExpanded(isExpanded ? panel : false);
-        };
+    const handleChange = (panel: string) => (
+        event: React.SyntheticEvent,
+        isExpanded: boolean
+    ) => {
+        setExpanded(isExpanded ? panel : false);
+    };
 
     const handlePageChange = (page: number) => {
+        setExpanded(false);
         setCurrentPage(page);
     };
 
-    let currentData = data.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+    let currentData = data.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
+
+    const accordionStyles = `
+    /* Styling for the accordion summary */
+    .smooth-summary {
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    /* Styling for the expanded accordion summary */
+    .smooth-summary.Mui-expanded {
+      background-color: #f5f5f5; /* Change to the desired color for expanded state */
+    }
+
+    /* Styling for the accordion details */
+    .smooth-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    }
+
+    /* Styling for the expanded accordion details */
+    .smooth-details.Mui-expanded {
+      opacity: 1;
+      max-height: 1000px; /* Change to the desired max height for expanded state */
+    }
+  `;
 
     return (
         <div>
+            <style>{accordionStyles}</style>
             {currentData.map((item, index) => {
-                // Split the services and filter out the ones with length <= 20
-                const services = item["Services"]
-                    ? filterServices(item["Services"].split(","), 20)
+                const services = item['Services']
+                    ? filterServices(item['Services'].split(','), 20)
                     : [];
 
                 return (
@@ -68,31 +99,31 @@ export default function ControlledAccordions() {
                         expanded={expanded === `panel${index + 1}`}
                         onChange={handleChange(`panel${index + 1}`)}
                         key={`panel${index + 1}`}
+                        className="smooth-accordion"
                     >
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls={`panel${index + 1}bh-content`}
                             id={`panel${index + 1}bh-header`}
+                            className="smooth-summary"
                         >
-                            <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                                {item.Name ?? "Not Available"}
+                            <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                                {item.Name ?? 'Not Available'}
                             </Typography>
                             {services.length > 0 && (
                                 <div>
-                                    {services
-                                        .slice(0, 3)
-                                        .map((service, index) => (
-                                            <Chip
-                                                key={index}
-                                                label={service.trim()}
-                                                size="small"
-                                                style={{ margin: "0 5px 5px 0" }}
-                                            />
-                                        ))}
+                                    {services.slice(0, 3).map((service, index) => (
+                                        <Chip
+                                            key={index}
+                                            label={service.trim()}
+                                            size="small"
+                                            style={{ margin: '0 5px 5px 0' }}
+                                        />
+                                    ))}
                                 </div>
                             )}
                         </AccordionSummary>
-                        <AccordionDetails key={`panel${index + 1}`}>
+                        <AccordionDetails key={`panel${index + 1}`} className="smooth-details">
                             <ImgMediaCard item={item} />
                         </AccordionDetails>
                     </Accordion>
@@ -105,4 +136,6 @@ export default function ControlledAccordions() {
             />
         </div>
     );
-}
+};
+
+export default ControlledAccordions;
