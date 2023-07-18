@@ -80,7 +80,7 @@ export default function SwipeableEdgeDrawer() {
                     }}
                 >
                     <Puller />
-                    <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography>
+                    <Typography sx={{ p: 2, color: 'text.secondary' }}>Results</Typography>
                 </StyledBox>
                 <StyledBox
                     sx={{

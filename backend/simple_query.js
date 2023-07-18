@@ -26,9 +26,13 @@ async function run() {
         // Define pipeline
         const agg = [
             // The string next to "query" needs to be input from the user
-            {$search: { text: {query: "school", path: ["Name", "Services"] }}},
-            {$project: {_id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1, 
-            "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1}}
+            { $search: { text: { query: "school", path: ["Name", "Services"] } } },
+            {
+                $project: {
+                    _id: 0, Name: 1, Services: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
+                    "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1
+                }
+            }
         ];
 
         // Run pipeline
@@ -58,38 +62,38 @@ async function run() {
         else {
             console.log("NONE");
         }
-        
+
         app.get("/", (req, res) => {
             res.send(results);
         });
-        
+
         const PORT = process.env.PORT || 8000;
-        
+
         app.listen(PORT, console.log(`Server started on port ${PORT}`));
-        
+
     } finally {
         await client.close();
         console.log("Connection Closed");
-    }  
+    }
 
 }
 
-async function write_JSON () {
+async function write_JSON() {
     await client.connect();
 
     console.log("Connected successfully to server");
     const db = client.db("OrganizationList");
 
-    const query = { };  // A blank query returns all of the collections
-    
+    const query = {};  // A blank query returns all of the collections
+
     const db_array = await db.collection("Information").find(query).toArray();
-    
+
     // Write to file
     try {
         fs.writeFileSync("out_file.json", JSON.stringify(db_array));
         console.log("Done writing to file");
     }
-    catch(err) {
+    catch (err) {
         console.log("Error writing to file", err)
     }
 };
