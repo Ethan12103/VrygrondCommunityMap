@@ -9,7 +9,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ControlledAccordions from './ControlledAccordions'
-import PaginationControlled from './PaginationControlled'
 
 const drawerBleeding = 56;
 
@@ -91,7 +90,6 @@ export default function SwipeableEdgeDrawer() {
                     }}
                 >
                     <ControlledAccordions />
-                    <PaginationControlled />
                 </StyledBox>
             </SwipeableDrawer>
         </Root>

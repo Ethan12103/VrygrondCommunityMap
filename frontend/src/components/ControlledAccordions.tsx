@@ -6,7 +6,7 @@ import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ImgMediaCard from './ImgMediaCard';
-
+import PaginationControlled from './PaginationControlled'
 import { useState, useEffect } from 'react';
 
 type ItemData = {
@@ -28,9 +28,12 @@ const filterServices = (services: string[], maxLength: number) => {
     );
 };
 
+const ITEMS_PER_PAGE = 3;
+
 export default function ControlledAccordions() {
     const [expanded, setExpanded] = useState<string | false>(false);
     const [data, setData] = useState<ItemData[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         fetch('http://localhost:8000/')
@@ -46,9 +49,15 @@ export default function ControlledAccordions() {
             setExpanded(isExpanded ? panel : false);
         };
 
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+    };
+
+    let currentData = data.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
     return (
         <div>
-            {data.map((item, index) => {
+            {currentData.map((item, index) => {
                 // Split the services and filter out the ones with length <= 20
                 const services = item["Services"]
                     ? filterServices(item["Services"].split(","), 20)
@@ -89,6 +98,11 @@ export default function ControlledAccordions() {
                     </Accordion>
                 );
             })}
+            <PaginationControlled
+                count={Math.ceil(data.length / ITEMS_PER_PAGE)}
+                page={currentPage}
+                onChange={handlePageChange}
+            />
         </div>
     );
 }

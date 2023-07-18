@@ -1,28 +1,26 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 
-export default function PaginationControlled() {
-  const [page, setPage] = React.useState(1);
+interface Props {
+  count: number;
+  page: number;
+  onChange: (page: number) => void;
+}
+
+export default function PaginationControlled({ count, page, onChange }: Props) {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
+    onChange(value);
   };
 
   return (
     <div style={{
-      position: 'relative',
-      paddingBottom: '10px',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'flex-end',
-      height: '100px', // Set the height of the container as needed
+      alignItems: 'center',
+      height: '50px', // Set the height of the container as needed
     }}>
       <Pagination
-        sx={{
-          position: 'absolute',
-          bottom: 0,
-        }}
-        count={10}
+        count={count}
         page={page}
         onChange={handleChange}
         hidePrevButton
