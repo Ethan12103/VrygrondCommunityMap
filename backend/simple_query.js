@@ -39,7 +39,7 @@ async function run() {
         try {
             while (await cursor.hasNext()) {
                 const document = await cursor.next();
-                const documentArray = Object.values(document);
+                const documentArray = Object.entires(document);
                 resultArray.push(documentArray);
             }
 
