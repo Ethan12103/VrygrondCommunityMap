@@ -11,14 +11,14 @@ import { useState, useEffect } from 'react';
 
 type ItemData = {
     Name: string;
-    ["Services"]: string;
-    ["Address 1"]: string;
-    ["Address 2"]: string;
-    ["Contact Number 1"]: string;
-    ["Contact Number 2"]: string;
-    ["Contact Persons"]: string;
-    ["Email Address 1"]: string;
-    ["Email Address 2"]: string;
+    ['Services']: string;
+    ['Address 1']: string;
+    ['Address 2']: string;
+    ['Contact Number 1']: string;
+    ['Contact Number 2']: string;
+    ['Contact Persons']: string;
+    ['Email Address 1']: string;
+    ['Email Address 2']: string;
     Website: string;
 };
 
@@ -99,13 +99,13 @@ const ControlledAccordions = () => {
                         expanded={expanded === `panel${index + 1}`}
                         onChange={handleChange(`panel${index + 1}`)}
                         key={`panel${index + 1}`}
-                        className="smooth-accordion"
+                        className='smooth-accordion'
                     >
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls={`panel${index + 1}bh-content`}
                             id={`panel${index + 1}bh-header`}
-                            className="smooth-summary"
+                            className='smooth-summary'
                         >
                             <Typography sx={{ width: '33%', flexShrink: 0 }}>
                                 {item.Name ?? 'Not Available'}
@@ -116,14 +116,14 @@ const ControlledAccordions = () => {
                                         <Chip
                                             key={index}
                                             label={service.trim()}
-                                            size="small"
+                                            size='small'
                                             style={{ margin: '0 5px 5px 0' }}
                                         />
                                     ))}
                                 </div>
                             )}
                         </AccordionSummary>
-                        <AccordionDetails key={`panel${index + 1}`} className="smooth-details">
+                        <AccordionDetails key={`panel${index + 1}`} className='smooth-details'>
                             <ImgMediaCard item={item} />
                         </AccordionDetails>
                     </Accordion>

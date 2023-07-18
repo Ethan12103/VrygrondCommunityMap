@@ -55,7 +55,7 @@ export default function SwipeableEdgeDrawer() {
                 <Button onClick={toggleDrawer(true)} sx={{ color: 'white' }}>Update & Search</Button>
             </Box>
             <SwipeableDrawer
-                anchor={"bottom"}
+                anchor={'bottom'}
                 open={open}
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}

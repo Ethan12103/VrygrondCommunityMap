@@ -1,10 +1,10 @@
-import { Drawer, useMediaQuery, IconButton } from "@mui/material";
+import { Drawer, useMediaQuery, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { ToggleButtonMenu } from './Sidebar';
 import ResultPanel from './ResultPanel';
-import RenderGroup from "./SearchPanel";
+import RenderGroup from './SearchPanel';
 import { useTheme } from '@mui/system';
 import Box from '@mui/material/Box';
 
@@ -32,16 +32,16 @@ export const MuiDrawer = () => {
             >
                 <RenderGroup />
                 <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    p: 1,
-                    backgroundColor: 'black',
-                }}
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        p: 1,
+                        backgroundColor: 'black',
+                    }}
                 >
                     <ResultPanel />
                 </Box>

@@ -39,7 +39,7 @@ export default function ImgMediaCard({ item }: itemProps) {
     <Card>
       <CardMedia
         sx={{ minHeight: '80px', minWidth: '100%' }}
-        image="https://static.wixstatic.com/media/770783_586964e6e955422da8a93dc8ab8b6156~mv2.jpg/v1/fill/w_891,h_238,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/BAP%20LOGO%202015%20slogan_open%20file%20no%20backgr.jpg"
+        image='https://static.wixstatic.com/media/770783_586964e6e955422da8a93dc8ab8b6156~mv2.jpg/v1/fill/w_891,h_238,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/BAP%20LOGO%202015%20slogan_open%20file%20no%20backgr.jpg'
       />
       <CardContent>
         {item['Services'] && (
@@ -47,11 +47,11 @@ export default function ImgMediaCard({ item }: itemProps) {
             {item['Services']
               .split(',')
               .map((service: string, index: number) => (
-                <Chip key={index} label={service.trim()} size="small" style={{ margin: '0 5px 5px 0' }} />
+                <Chip key={index} label={service.trim()} size='small' style={{ margin: '0 5px 5px 0' }} />
               ))}
           </div>
         )}
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant='body2' color='text.secondary'>
           {item['Contact Persons'] && (
             <>
               Contact Person: {item['Contact Persons']}
@@ -82,12 +82,12 @@ export default function ImgMediaCard({ item }: itemProps) {
       </CardContent>
       <CardActions>
         {item['Address 1'] || item['Address 2'] ? (
-          <IconButton aria-label="place" size="large">
+          <IconButton aria-label='place' size='large'>
             <PlaceIcon />
           </IconButton>
         ) : null}
         {item['Contact Number 1'] ? (
-          <IconButton aria-label={item['Contact Number 1']} size="large" onClick={handlePhoneIconClick}>
+          <IconButton aria-label={item['Contact Number 1']} size='large' onClick={handlePhoneIconClick}>
             <PhoneIcon />
           </IconButton>
         ) : null}

@@ -12,13 +12,13 @@ import ProblemForm from './ProblemPage';
 export const ButtonAppBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ color: 'white', backgroundColor: 'black' }}>
+      <AppBar position='static' sx={{ color: 'white', backgroundColor: 'black' }}>
         <Toolbar>
           <MuiDrawer />
           <HelpPage />
-          <Typography variant="h6" component="div" sx={{
+          <Typography variant='h6' component='div' sx={{
             flexGrow: 1,
-            textAlign: "center",
+            textAlign: 'center',
             fontFamily: 'San Francisco, Arial ',
             fontSize: '20px',
             fontWeight: 600,
@@ -32,7 +32,7 @@ export const ButtonAppBar = () => {
           }}>
             Vrygrond Trust Community Map
           </Typography>
-          <ProblemForm/>
+          <ProblemForm />
         </Toolbar>
       </AppBar>
     </Box>

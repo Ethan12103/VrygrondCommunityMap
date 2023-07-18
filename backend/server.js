@@ -16,14 +16,14 @@ app.use(express.text());
 
 async function ConnectToDatabase() {
     // Connect to MongoDB Atlas
-    mongoose.connect('mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/', 
-    { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('Connected to MongoDB Atlas');
-    })
-    .catch((error) => {
-        console.error('Error connecting to MongoDB Atlas:', error);
-    });
+    mongoose.connect('mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/',
+        { useNewUrlParser: true, useUnifiedTopology: true })
+        .then(() => {
+            console.log('Connected to MongoDB Atlas');
+        })
+        .catch((error) => {
+            console.error('Error connecting to MongoDB Atlas:', error);
+        });
 
     // Define a route that will handle incoming requests
     app.post('/data', async (req, res) => {
@@ -38,9 +38,13 @@ async function ConnectToDatabase() {
             // Define pipeline
             const agg = [
                 // The string next to "query" needs to be input from the user
-                {$search: { text: {query: stringInput, path: ["Name", "Services"] }}},
-                {$project: {_id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1, 
-                "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1}}
+                { $search: { text: { query: stringInput, path: ["Name", "Services"] } } },
+                {
+                    $project: {
+                        _id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
+                        "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1
+                    }
+                }
             ];
             // Run pipeline
             let cursor = coll.aggregate(agg);
@@ -67,21 +71,21 @@ async function ConnectToDatabase() {
             }
             else {
                 console.log("NONE");
-            } 
+            }
             // Optionally, send a response back
             res.send('String input received successfully');
             res.send(results);
 
         }
 
-        catch(err) {
+        catch (err) {
             console.log("Error writing to file", err)
-        } 
-            
+        }
+
         finally {
             await client.close();
-        }  
-            
+        }
+
     });
 }
 

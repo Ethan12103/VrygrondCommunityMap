@@ -40,7 +40,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
       {children}
       {onClose ? (
         <IconButton
-          aria-label="close"
+          aria-label='close'
           onClick={onClose}
           sx={{
             position: 'absolute',
@@ -68,45 +68,45 @@ export default function HelpPage() {
 
   return (
     <div>
-        <IconButton size="large" edge="start" color="inherit" onClick={handleClickOpen}>
-            <HelpOutlineIcon />
-        </IconButton>
+      <IconButton size='large' edge='start' color='inherit' onClick={handleClickOpen}>
+        <HelpOutlineIcon />
+      </IconButton>
       <BootstrapDialog
         onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
+        aria-labelledby='customized-dialog-title'
         open={open}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          <Typography variant="h1" fontSize={25} fontWeight={"bold"} gutterBottom>
+        <BootstrapDialogTitle id='customized-dialog-title' onClose={handleClose}>
+          <Typography variant='h1' fontSize={25} fontWeight={'bold'} gutterBottom>
             How to Use the Map
           </Typography>
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
             Step 1:
           </Typography>
           <Typography fontSize={15} gutterBottom>
             Click on the search icon in the top right corner to open the search panel
           </Typography>
-          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
             Step 2:
           </Typography>
           <Typography fontSize={15} gutterBottom>
-            Choose the "Organisations" box to search for specific organisations. Choose the "Categories" box to search for all organisations within a category.
+            Choose the 'Organisations' box to search for specific organisations. Choose the 'Categories' box to search for all organisations within a category.
           </Typography>
-          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
             Step 3:
           </Typography>
           <Typography fontSize={15} gutterBottom>
-            Select a organisation/category and click "Update & Search". To search for all organisations leave both boxes blank.
+            Select a organisation/category and click 'Update & Search'. To search for all organisations leave both boxes blank.
           </Typography>
-          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
             Step 4:
           </Typography>
           <Typography fontSize={15} gutterBottom>
             Scroll through organisations to find one that you need. Click on organisation to read more information about it.
           </Typography>
-          <Typography variant="h2" fontSize={15} fontWeight={"bold"} gutterBottom>
+          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
             Step 5:
           </Typography>
           <Typography fontSize={15} gutterBottom>

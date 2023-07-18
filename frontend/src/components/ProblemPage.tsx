@@ -20,7 +20,7 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button onClick={handleClickOpen} sx={{color:'white'}}>
+      <Button onClick={handleClickOpen} sx={{ color: 'white' }}>
         Virus
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -31,12 +31,12 @@ export default function FormDialog() {
           </DialogContentText>
           <TextField
             autoFocus
-            margin="dense"
-            id="name"
-            label="Response"
-            type="email"
+            margin='dense'
+            id='name'
+            label='Response'
+            type='email'
             fullWidth
-            variant="standard"
+            variant='standard'
           />
         </DialogContent>
         <DialogActions>
