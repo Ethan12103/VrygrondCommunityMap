@@ -6,9 +6,17 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
+import CloseIcon from '@mui/icons-material/Close';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
+import EmailIcon from '@mui/icons-material/Email';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HomeIcon from '@mui/icons-material/Home';
+import LaunchIcon from '@mui/icons-material/Launch';
+import PhoneIcon from '@mui/icons-material/Phone';
+import PlaceIcon from '@mui/icons-material/Place';
+import SearchIcon from '@mui/icons-material/Search';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -77,40 +85,39 @@ export default function HelpPage() {
         open={open}
       >
         <BootstrapDialogTitle id='customized-dialog-title' onClose={handleClose}>
-          <Typography variant='h1' fontSize={25} fontWeight={'bold'} gutterBottom>
-            How to Use the Map
+          <Typography variant='h1' fontSize={16} fontWeight={'bold'} gutterBottom>
+            How to Use
           </Typography>
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
+          <Typography variant='h2' fontSize={12} fontWeight={'bold'} gutterBottom>
             Step 1:
           </Typography>
-          <Typography fontSize={15} gutterBottom>
-            Click on the search icon in the top right corner to open the search panel
+          <Typography fontSize={16} gutterBottom>
+            Click<SearchIcon fontSize='small' />to open the search panel. To close, click<CloseIcon fontSize='small' />.
           </Typography>
-          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
+          <Typography variant='h2' fontSize={12} fontWeight={'bold'} gutterBottom>
             Step 2:
           </Typography>
-          <Typography fontSize={15} gutterBottom>
-            Choose the 'Organisations' box to search for specific organisations. Choose the 'Categories' box to search for all organisations within a category.
+          <Typography fontSize={16} gutterBottom>
+            You can search for a specific organization, or all organizations in one or more categories.
           </Typography>
-          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
+          <Typography variant='h2' fontSize={12} fontWeight={'bold'} gutterBottom>
+          </Typography>
+          <Typography fontSize={16} gutterBottom>
+            You can type words or select from suggestions. To browse all, leave both boxes blank.
+          </Typography>
+          <Typography variant='h2' fontSize={12} fontWeight={'bold'} gutterBottom>
             Step 3:
           </Typography>
-          <Typography fontSize={15} gutterBottom>
-            Select a organisation/category and click 'Update & Search'. To search for all organisations leave both boxes blank.
+          <Typography fontSize={16} gutterBottom>
+            Click on organization to know contact persons<ContactPageIcon fontSize='small' />, hours<EventAvailableIcon fontSize='small' />, emails<EmailIcon fontSize='small' />, websites<LaunchIcon fontSize='small' />, addresses<HomeIcon fontSize='small' />, etc.
           </Typography>
-          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
+          <Typography variant='h2' fontSize={12} fontWeight={'bold'} gutterBottom>
             Step 4:
           </Typography>
-          <Typography fontSize={15} gutterBottom>
-            Scroll through organisations to find one that you need. Click on organisation to read more information about it.
-          </Typography>
-          <Typography variant='h2' fontSize={15} fontWeight={'bold'} gutterBottom>
-            Step 5:
-          </Typography>
-          <Typography fontSize={15} gutterBottom>
-            To find the location of the organisation on the map click on the pin icon in the bottom left of the organisation information box.
+          <Typography fontSize={16} gutterBottom>
+            Click<PlaceIcon fontSize='small'/>button to spot the organization on map. Click<PhoneIcon fontSize='small' />button to call the organization.
           </Typography>
         </DialogContent>
       </BootstrapDialog>

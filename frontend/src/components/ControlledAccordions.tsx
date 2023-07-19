@@ -17,6 +17,7 @@ type ItemData = {
     ['Contact Number 1']: string;
     ['Contact Number 2']: string;
     ['Contact Persons']: string;
+    ['Hours']: string;
     ['Email Address 1']: string;
     ['Email Address 2']: string;
     Website: string;
@@ -39,7 +40,7 @@ const ControlledAccordions = () => {
         fetch('http://localhost:8000/')
             .then((response) => response.json())
             .then((data) => {
-                setData(data.map((org: any[]) => Object.fromEntries(org)));
+                setData(data.map((item: any[]) => Object.fromEntries(item)));
             });
     }, []);
 
