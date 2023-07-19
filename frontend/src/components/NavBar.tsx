@@ -8,6 +8,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { MuiDrawer } from './MuiDrawer';
 import HelpPage from './HelpPage';
 import ProblemForm from './ProblemPage';
+import { styled, createTheme } from '@mui/material/styles';
 
 export const ButtonAppBar = () => {
   return (
@@ -19,10 +20,9 @@ export const ButtonAppBar = () => {
           <Typography variant='h6' component='div' sx={{
             flexGrow: 1,
             textAlign: 'center',
-            fontFamily: 'San Francisco, Arial ',
+            fontFamily: '-apple-system',
             fontSize: '20px',
             fontWeight: 600,
-            textTransform: 'uppercase',
             letterSpacing: '1px',
             lineHeight: 1.5,
             WebkitBackgroundClip: 'text',
