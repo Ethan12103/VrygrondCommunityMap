@@ -31,23 +31,6 @@ export default function SearchBox() {
   }, []);
   return (
     <div>
-<<<<<<< HEAD
-      <Autocomplete
-        disablePortal
-        id='combo-box-demo'
-        options={organizations}
-        sx={{ width: 300, padding: '10px' }}
-        renderInput={(params) => <TextField {...params} label='What organization?' />}
-      />
-      <Autocomplete
-        disablePortal
-        multiple
-        id='combo-box-demo'
-        options={services}
-        sx={{ width: 300, padding: '10px' }}
-        renderInput={(params) => <TextField {...params} label='What service?' />}
-      />
-=======
           <Autocomplete
           disablePortal
           id="combo-box-demo"
@@ -63,7 +46,6 @@ export default function SearchBox() {
             sx={{ width: 300, padding: '10px' }}
             renderInput={(params) => <TextField {...params} label='What service?' />}
           />
->>>>>>> 19286b5060a001f9a2c9e9a2def5d1c2d45d34bd
     </div>
   );
 }
