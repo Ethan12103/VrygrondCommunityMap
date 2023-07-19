@@ -8,9 +8,9 @@ export default function ComboBox() {
       <Autocomplete
         disablePortal
         id='combo-box-demo'
-        options={top100Films}
+        options={organizations}
         sx={{ width: 300, padding: '10px' }}
-        renderInput={(params) => <TextField {...params} label='What organisation?' />}
+        renderInput={(params) => <TextField {...params} label='What organization?' />}
       />
       <Autocomplete
         disablePortal
@@ -24,7 +24,7 @@ export default function ComboBox() {
   );
 }
 
-const top100Films = [
+const organizations = [
   { label: 'Capricorn Hyper Care', year: 1994 },
   { label: 'Ben Bikes', year: 1972 },
   { label: 'Cape Times Fresh Air Fund', year: 1974 },
@@ -32,10 +32,7 @@ const top100Films = [
   { label: 'Carel du Toit Center', year: 1957 },
   { label: 'Chrysalis Academy', year: 1993 },
   { label: 'Dominican School for the Deaf', year: 1994 },
-  {
-    label: 'Jo\'s School',
-    year: 2003,
-  },
+  { label: 'Jo\'s School', year: 2003, },
   { label: 'Law For All', year: 1966 },
 ];
 const services = [
