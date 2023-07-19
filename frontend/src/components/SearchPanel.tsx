@@ -1,25 +1,51 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useState, useEffect } from 'react';
 
-export default function ComboBox() {
+type ItemData = {
+  Name: string;
+  ['Services']: string;
+  ['Address 1']: string;
+  ['Address 2']: string;
+  ['Contact Number 1']: string;
+  ['Contact Number 2']: string;
+  ['Contact Persons']: string;
+  ['Email Address 1']: string;
+  ['Email Address 2']: string;
+  Website: string;
+};
+
+export default function SearchBox() {
+  const [data, setData] = useState<ItemData[]>([]);
+  React.useEffect(() => {
+    fetch('http://localhost:4000/')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Received data:', data);
+        setData(data.map((org: any[]) => Object.fromEntries(org)));
+      })
+      .catch((error) => {
+        console.error('Error fetching JSON:', error);
+      });
+  }, []);
   return (
     <div>
-      <Autocomplete
-        disablePortal
-        id='combo-box-demo'
-        options={top100Films}
-        sx={{ width: 300, padding: '10px' }}
-        renderInput={(params) => <TextField {...params} label='What organisation?' />}
-      />
-      <Autocomplete
-        disablePortal
-        multiple
-        id='combo-box-demo'
-        options={services}
-        sx={{ width: 300, padding: '10px' }}
-        renderInput={(params) => <TextField {...params} label='What service?' />}
-      />
+          <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={data.map((item) => item.Name)}
+          sx={{ width: 300, padding: '10px'}}
+          renderInput={(params) => <TextField {...params} label="What organisation?" />}
+          />
+          <Autocomplete
+            disablePortal
+            multiple
+            id='combo-box-demo'
+            options={services}
+            sx={{ width: 300, padding: '10px' }}
+            renderInput={(params) => <TextField {...params} label='What service?' />}
+          />
     </div>
   );
 }
