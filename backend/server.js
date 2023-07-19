@@ -1,20 +1,28 @@
-// Name: Bailey Ballard
-// University of Florida
-// Date: 7/19/2023
+/* 
+    Name: Bailey Ballard
+    University of Florida
+    Date: 7/19/2023
 
-// See results printed to http://localhost:8000/
-// This file has 2 functions
+    This file has 2 functions
 
-// SearchByName: Connects to a MongoDB Atlas database, performs a query serach based on string input
-// by front-end react.js application, and writes the JSON string to "output_file.json" located in the 
-// frontend/components/ file path
+    1. SearchByName() 
+    Connects to a MongoDB Atlas Cluster, performs a query serach based on string input from the 
+    front-end react.js application, and returns the JSON string results to the specified port
+    Commented out right now - Writes the JSON string to "SearchedNames.json" located in the 
+    frontend/src/components/ file path
 
-// SearchByService: Same function as SearchByName but performs a query seach on the services category of 
-// the MongoDB Atlas
+    2. SearchByService() 
+    Same function as SearchByName but performs a query seach on the services category of 
+    the MongoDB Atlas Cluster.
+    Commented out right now - Writes the JSON string to "SearchedServices.json" located in the 
+    frontend/src/components/ file path
+
+    See results printed to http://localhost:8000/
+
+*/
 
 const { MongoClient } = require("mongodb");
 const express = require("express");
-const mongoose = require('mongoose');
 const app = express();
 const port = 8000;
 const fs = require('fs');
@@ -30,7 +38,6 @@ async function SearchByName() {
     await client.connect();
     console.log("Connected successfully to server");
 
-        
     // Define a route that will handle incoming requests
     app.post('/data', async (req, res) => {
         // Handle the incoming request and extract the string input
@@ -48,7 +55,8 @@ async function SearchByName() {
             {
                 $project: {
                     _id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
-                    "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1
+                    "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1,
+                    Latitude: 1, Longitude: 1
                 }
             }
 
@@ -58,7 +66,6 @@ async function SearchByName() {
 
         const resultArray = [];
         
-
         while (await cursor.hasNext()) {
             const document = await cursor.next();
             const documentArray = Object.values(document);
@@ -69,25 +76,28 @@ async function SearchByName() {
 
         // Create loop to index through each object element to remove "Organisation"
         if (results.length > 0) {
-            console.log("FOUND");
+            console.log("Sending results to port 8000");
         }
         else {
-            console.log("NONE");
+            console.log("No matches found");
         }
-        // Optionally, send a response back
-        //res.send('String input received successfully');
-        //res.send(results);
-
+        // Send the full JSON list back filtered by search query
+        res.send('String input received successfully');
+        res.send(results);
 
         // Write to file
+        /*
         try {
-            fs.writeFileSync("../frontend/src/components/out_file.json", results);
+            fs.writeFileSync("../frontend/src/components/SearchedNames.json", results);
             console.log("Done writing to file");
         }
         catch(err) {
             console.log("Error writing to file", err)
         }
-            
+        */
+        client.close();
+
+        console.log("Closting Connection");    
     });
 }
 
@@ -103,28 +113,6 @@ async function SearchByService() {
 
         // Process the received string input as needed
 
-            // Set namespace
-            const database = client.db("OrganizationList");
-            const coll = database.collection("Information");
-            // Define pipeline
-            const agg = [
-                // The string next to "query" needs to be input from the user
-                {$search: { text: {query: "school", path: "Services" }}},
-                {$project: {_id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1, 
-                "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1}}
-            ];
-            // Run pipeline
-            let cursor = coll.aggregate(agg);
-            
-            const resultArray = [];
-
-            while (await cursor.hasNext()) {
-                const document = await cursor.next();
-                const documentArray = Object.values(document);
-                resultArray.push(documentArray);
-                
-
-
         // Set namespace
         const database = client.db("OrganizationList");
         const coll = database.collection("Information");
@@ -135,11 +123,12 @@ async function SearchByService() {
             {
                 $project: {
                     _id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
-                    "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1
+                    "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1,
+                    Latitude: 1, Longitude: 1
                 }
             }
-
         ];
+
         // Run pipeline
         let cursor = coll.aggregate(agg);
 
@@ -153,28 +142,34 @@ async function SearchByService() {
 
         const results = JSON.stringify(resultArray);
 
-        // Create loop to index through each object element to remove "Organisation"
         if (results.length > 0) {
-            console.log("FOUND");
+            console.log("Sending results to port 8000");
         }
         else {
-            console.log("NONE");
+            console.log("No matches found");
         }
         // Optionally, send a response back
 
         // Write to file
+        /*
         try {
-            fs.writeFileSync("../frontend/src/components/out_file.json", results);
+            fs.writeFileSync("../frontend/src/components/SearchedServices.json", results);
             console.log("Done writing to file");
         }
         catch(err) {
             console.log("Error writing to file", err)
         }
-            
+        */
+
+        // Send the full JSON list back filtered by search query
+        res.send('String input received successfully');
+        res.send(results);
+
+        client.close();
+        console.log("Closting Connection");    
     });
 };
 
 SearchByName();
 
 SearchByService();
-
