@@ -35,7 +35,7 @@ async function SearchByName() {
     // Define a route that will handle incoming requests
     app.post('/data', async (req, res) => {
         // Handle the incoming request and extract the string input
-        //const stringInput = req.body;
+        const stringInput = req.body;
 
         // Process the received string input as needed
         try {
@@ -119,8 +119,8 @@ async function SearchByService() {
     // Define a route that will handle incoming requests
     app.post('/data', async (req, res) => {
         // Handle the incoming request and extract the string input
-        //const stringInput = req.body;
-        console.log("HERE");
+        const stringInput = req.body;
+        
         // Process the received string input as needed
         try {
             // Set namespace
@@ -135,7 +135,7 @@ async function SearchByService() {
             ];
             // Run pipeline
             let cursor = coll.aggregate(agg);
-            console.log("Serach Completed");
+            
             const resultArray = [];
 
             try {
