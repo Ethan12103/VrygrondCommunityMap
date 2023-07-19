@@ -1,31 +1,26 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import ProTip from './ProTip';
+import { LeafletMap } from './components/Leaflet';
+import { ButtonAppBar } from './components/NavBar';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/bballardUF/BAP">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}.
-    </Typography>
-  );
-}
 
 export default function App() {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI Create React App example in TypeScript
-        </Typography>
-        <ProTip />
-        <Copyright />
+    <Container maxWidth='xl'
+      style={{
+        position: 'absolute',
+        paddingLeft: 0,
+        paddingRight: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 0
+      }}>
+      <ButtonAppBar />
+      <Box justifyContent='flex-end' sx={{ border: 1, borderColor: 'black' }}>
+        <LeafletMap />
       </Box>
     </Container>
   );
