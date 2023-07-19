@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Global } from '@emotion/react';
 import { styled, useTheme } from '@mui/material/styles';
+import SearchIcon from '@mui/icons-material/Search';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import { grey } from '@mui/material/colors';
@@ -51,9 +52,9 @@ export default function SwipeableEdgeDrawer() {
                     },
                 }}
             />
-            <Box sx={{ textAlign: 'center', pt: 1, backgroundColor: 'black' }}>
-                <Button onClick={toggleDrawer(true)} sx={{ color: 'white' }}>Update & Search</Button>
-            </Box>
+            <Button onClick={toggleDrawer(true)} size='large' variant="contained" endIcon={<SearchIcon />}>
+                Update & Search
+            </Button>
             <SwipeableDrawer
                 anchor={'bottom'}
                 open={open}

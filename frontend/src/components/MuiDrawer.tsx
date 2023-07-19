@@ -2,7 +2,6 @@ import { Drawer, useMediaQuery, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
-import { ToggleButtonMenu } from './Sidebar';
 import ResultPanel from './ResultPanel';
 import RenderGroup from './SearchPanel';
 import { useTheme } from '@mui/system';
@@ -27,20 +26,35 @@ export const MuiDrawer = () => {
                 open={isDrawerOpen}
                 onClose={handleCloseDrawer}
                 PaperProps={{
-                    style: isMobile ? { width: '100%', flexShrink: 0, height: '91vh' } : { position: 'absolute', left: 0, width: '400px', maxWidth: '400px', height: '92vh' }
+                    style: isMobile ? {
+                        width: '100%',
+                        flexShrink: 0,
+                        height: '100%'
+                    } : { position: 'absolute', left: 0, width: '400px', maxWidth: '400px', height: '92vh' }
                 }}
             >
-                <RenderGroup />
                 <Box
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',
                         position: 'absolute',
-                        bottom: 0,
+                        top: '20%',
                         left: 0,
                         right: 0,
                         p: 1,
-                        backgroundColor: 'black',
+                    }}
+                >
+                    <RenderGroup />
+                </Box>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        position: 'absolute',
+                        bottom: '30%',
+                        left: 0,
+                        right: 0,
+                        p: 1,
                     }}
                 >
                     <ResultPanel />
