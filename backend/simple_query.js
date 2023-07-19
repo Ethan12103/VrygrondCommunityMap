@@ -90,7 +90,7 @@ async function write_JSON() {
 
     // Write to file
     try {
-        fs.writeFileSync("out_file.json", JSON.stringify(db_array));
+        fs.writeFileSync("out_file.json", JSON.stringify(db_array, null, 2));
         console.log("Done writing to file");
     }
     catch (err) {

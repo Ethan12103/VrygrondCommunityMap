@@ -103,6 +103,28 @@ async function SearchByService() {
 
         // Process the received string input as needed
 
+            // Set namespace
+            const database = client.db("OrganizationList");
+            const coll = database.collection("Information");
+            // Define pipeline
+            const agg = [
+                // The string next to "query" needs to be input from the user
+                {$search: { text: {query: "school", path: "Services" }}},
+                {$project: {_id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1, 
+                "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1}}
+            ];
+            // Run pipeline
+            let cursor = coll.aggregate(agg);
+            
+            const resultArray = [];
+
+            while (await cursor.hasNext()) {
+                const document = await cursor.next();
+                const documentArray = Object.values(document);
+                resultArray.push(documentArray);
+                
+
+
         // Set namespace
         const database = client.db("OrganizationList");
         const coll = database.collection("Information");
