@@ -23,9 +23,11 @@
 
 const { MongoClient } = require("mongodb");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 8000;
 const fs = require('fs');
+app.use(cors());
 
 // Add body-parser middleware to parse incoming request bodies
 app.use(express.text());

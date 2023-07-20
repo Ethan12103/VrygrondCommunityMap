@@ -21,8 +21,10 @@
 
 const { MongoClient } = require("mongodb");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const fs = require('fs');
+app.use(cors());
 
 // Connect to your Atlas clusterv
 const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
@@ -106,5 +108,5 @@ async function write_JSON () {
     }
 };
 
-write_JSON();
-//run().catch(console.dir);
+//write_JSON();
+run().catch(console.dir);
