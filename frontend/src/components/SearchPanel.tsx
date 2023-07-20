@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
+import { TextField, CircularProgress } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useState, useEffect } from 'react';
 
@@ -17,55 +17,94 @@ type ItemData = {
 };
 
 export default function SearchBox() {
-  const [data, setData] = useState<ItemData[]>([]);
-  React.useEffect(() => {
-    fetch('http://localhost:4000/')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Received data:', data);
-        setData(data.map((org: any[]) => Object.fromEntries(org)));
-      })
-      .catch((error) => {
-        console.error('Error fetching JSON:', error);
+  const [data, setData] = useState<any[]>([]);
+  const [open, setOpen] = useState(false);
+
+  const fetchData = async (searchString: string, path:string) => {
+    const response = await fetch(`http://localhost:8000/${path}`, {
+      method: 'POST', 
+      body: JSON.stringify({ searchString }),
+      headers: {"Content-Type": "application/json"}
+    });
+
+    return response.json(); 
+  }
+
+  useEffect(() => {
+    let active = true;
+    
+    if (open && active) {
+      fetchData('search string', 'data').then((items:any) => {
+        setData(items);
       });
-  }, []);
+    }
+    
+    return () => {
+      active = false;
+    };
+  }, [open]);
+
   return (
     <div>
-          <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={data.map((item) => item.Name)}
-          sx={{ width: 300, padding: '10px'}}
-          renderInput={(params) => <TextField {...params} label="What organisation?" />}
+      <Autocomplete
+        id="combo-box-demo"
+        open={open}
+        onOpen={() => {
+          setOpen(true);
+        }}
+        onClose={() => {
+          setOpen(false);
+        }}
+        isOptionEqualToValue={(option, value) => option.Name === value.Name}
+        getOptionLabel={(option) => option.Name}
+        options={data}
+        loading={open && data.length === 0}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search organizations"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <React.Fragment>
+                  {open && data.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
+                  {params.InputProps.endAdornment}
+                </React.Fragment>
+              ),
+            }}
           />
-          <Autocomplete
-            disablePortal
-            multiple
-            id='combo-box-demo'
-            options={services}
-            sx={{ width: 300, padding: '10px' }}
-            renderInput={(params) => <TextField {...params} label='What service?' />}
+        )}
+      />
+
+      <Autocomplete
+        id='combo-box-demo'
+        open={open}
+        onOpen={() => {
+          setOpen(true);
+        }}
+        onClose={() => {
+          setOpen(false);
+        }}
+        isOptionEqualToValue={(option, value) => option.Services === value.Services}
+        getOptionLabel={(option) => option.Services}
+        options={data}
+        loading={open && data.length === 0}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search services"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <React.Fragment>
+                  {open && data.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
+                  {params.InputProps.endAdornment}
+                </React.Fragment>
+              ),
+            }}
           />
+        )}
+      />
     </div>
   );
 }
-
-const organizations = [
-  { label: 'Capricorn Hyper Care', year: 1994 },
-  { label: 'Ben Bikes', year: 1972 },
-  { label: 'Cape Times Fresh Air Fund', year: 1974 },
-  { label: 'Artscape', year: 2008 },
-  { label: 'Carel du Toit Center', year: 1957 },
-  { label: 'Chrysalis Academy', year: 1993 },
-  { label: 'Dominican School for the Deaf', year: 1994 },
-  { label: 'Jo\'s School', year: 2003, },
-  { label: 'Law For All', year: 1966 },
-];
-const services = [
-  { label: 'Food' },
-  { label: 'Clothing' },
-  { label: 'School' },
-  { label: 'Library' },
-  { label: 'Abuse Center' },
-  { label: 'Computer Lab' },
-];
