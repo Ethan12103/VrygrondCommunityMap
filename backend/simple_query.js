@@ -28,7 +28,7 @@ const fs = require('fs');
 const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
 const client = new MongoClient(uri);
 
-/*
+
 async function run() {
     try {
         // Set namespace
@@ -84,7 +84,7 @@ async function run() {
     }  
 
 }
-*/
+
 
 async function write_JSON () {
     await client.connect();
