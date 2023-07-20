@@ -1,53 +1,25 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, CircularProgress } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useState, useEffect } from 'react';
+import data from './FullOrgList.json';
 
 type ItemData = {
   Name: string;
-  ['Services']: string;
-  ['Address 1']: string;
-  ['Address 2']: string;
-  ['Contact Number 1']: string;
-  ['Contact Number 2']: string;
-  ['Contact Persons']: string;
-  ['Email Address 1']: string;
-  ['Email Address 2']: string;
-  Website: string;
+  Services?: string; // Make 'Services' optional
 };
 
 export default function SearchBox() {
-  const [data, setData] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
-
-  const fetchData = async (searchString: string, path:string) => {
-    const response = await fetch(`http://localhost:8000/${path}`, {
-      method: 'POST', 
-      body: JSON.stringify({ searchString }),
-      headers: {"Content-Type": "application/json"}
-    });
-
-    return response.json(); 
-  }
+  const [orgData, setOrgData] = useState<ItemData[]>([]);
 
   useEffect(() => {
-    let active = true;
-    
-    if (open && active) {
-      fetchData('search string', 'data').then((items:any) => {
-        setData(items);
-      });
-    }
-    
-    return () => {
-      active = false;
-    };
-  }, [open]);
+    setOrgData(data);
+  }, []);
 
   return (
     <div>
       <Autocomplete
-        id="combo-box-demo"
+        id="org-search"
         open={open}
         onOpen={() => {
           setOpen(true);
@@ -55,10 +27,7 @@ export default function SearchBox() {
         onClose={() => {
           setOpen(false);
         }}
-        isOptionEqualToValue={(option, value) => option.Name === value.Name}
-        getOptionLabel={(option) => option.Name}
-        options={data}
-        loading={open && data.length === 0}
+        options={orgData.map((item) => item.Name)}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -67,7 +36,7 @@ export default function SearchBox() {
               ...params.InputProps,
               endAdornment: (
                 <React.Fragment>
-                  {open && data.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
+                  {open && orgData.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
                   {params.InputProps.endAdornment}
                 </React.Fragment>
               ),
@@ -77,7 +46,7 @@ export default function SearchBox() {
       />
 
       <Autocomplete
-        id='combo-box-demo'
+        id="service-search"
         open={open}
         onOpen={() => {
           setOpen(true);
@@ -85,10 +54,8 @@ export default function SearchBox() {
         onClose={() => {
           setOpen(false);
         }}
-        isOptionEqualToValue={(option, value) => option.Services === value.Services}
-        getOptionLabel={(option) => option.Services}
-        options={data}
-        loading={open && data.length === 0}
+        options={orgData.map((item) => item.Services || '')} // Ensure 'Services' is a string or use an empty string if it's undefined
+        loading={open && orgData.length === 0}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -97,7 +64,7 @@ export default function SearchBox() {
               ...params.InputProps,
               endAdornment: (
                 <React.Fragment>
-                  {open && data.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
+                  {open && orgData.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
                   {params.InputProps.endAdornment}
                 </React.Fragment>
               ),
