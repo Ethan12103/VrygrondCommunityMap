@@ -30,20 +30,22 @@ const fs = require('fs');
 app.use(cors());
 
 // Add body-parser middleware to parse incoming request bodies
-app.use(express.text());
+app.use(express.json());
 
 const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
 const client = new MongoClient(uri);
 
-async function SearchByName() {
+async function main() {
     // Connect to MongoDB Atlas
     await client.connect();
     console.log("Connected successfully to server");
+    let latestResults = null;
 
     // Define a route that will handle incoming requests
-    app.post('/data', async (req, res) => {
+    app.post('/searchByName', async (req, res) => {
         // Handle the incoming request and extract the string input
-        const stringInput = req.body;
+        console.log(req.body.organization);
+        const stringInput = req.body.organization;
 
         // Process the received string input as needed
 
@@ -70,11 +72,12 @@ async function SearchByName() {
         
         while (await cursor.hasNext()) {
             const document = await cursor.next();
-            const documentArray = Object.values(document);
-            resultArray.push(documentArray);
+            resultArray.push(document);
         }
 
-        const results = JSON.stringify(resultArray);
+        latestResults = resultArray;
+
+        const results = JSON.stringify(latestResults);
 
         // Create loop to index through each object element to remove "Organisation"
         if (results.length > 0) {
@@ -84,9 +87,7 @@ async function SearchByName() {
             console.log("No matches found");
         }
         // Send the full JSON list back filtered by search query
-        res.send('String input received successfully');
-        res.send(results);
-
+        res.json(results);
         // Write to file
         /*
         try {
@@ -97,21 +98,10 @@ async function SearchByName() {
             console.log("Error writing to file", err)
         }
         */
-        client.close();
-
-        console.log("Closting Connection");    
     });
-}
-
-async function SearchByService() {
-    // Connect to MongoDB Atlas
-    await client.connect();
-    console.log("Connected successfully to server");
-        
-    // Define a route that will handle incoming requests
-    app.post('/data', async (req, res) => {
+    app.post('/searchByService', async (req, res) => {
         // Handle the incoming request and extract the string input
-        const stringInput = req.body;
+        const stringInput = req.body.organization;
 
         // Process the received string input as needed
 
@@ -164,14 +154,20 @@ async function SearchByService() {
         */
 
         // Send the full JSON list back filtered by search query
-        res.send('String input received successfully');
-        res.send(results);
+        res.json(results);
 
-        client.close();
-        console.log("Closting Connection");    
     });
-};
+    app.get('/', (req, res) => {
+        if (latestResults) {
+            res.json(latestResults);
+        } else {
+            res.send("No results yet");
+        }
+    });
+    app.listen(port, () => {
+        console.log(`Server is running at http://localhost:${port}`);
+    });
+}
 
-SearchByName();
 
-SearchByService();
+main().catch(console.error);

@@ -37,10 +37,10 @@ const ControlledAccordions = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        fetch('http://localhost:8000/')
+        fetch('http://localhost:8000')
             .then((response) => response.json())
             .then((data) => {
-                setData(data.map((item: any[]) => Object.fromEntries(item)));
+                setData(data);
             });
     }, []);
 

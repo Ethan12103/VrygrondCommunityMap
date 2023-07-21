@@ -33,7 +33,11 @@ const Puller = styled(Box)(({ theme }) => ({
     left: 'calc(50% - 15px)',
 }));
 
-export default function SwipeableEdgeDrawer() {
+interface SwipeableEdgeDrawerProps {
+    onSearch: () => void;
+}
+
+export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerProps) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
@@ -52,7 +56,7 @@ export default function SwipeableEdgeDrawer() {
                     },
                 }}
             />
-            <Button onClick={toggleDrawer(true)} size='large' variant="contained" endIcon={<SearchIcon />}>
+            <Button onClick={() => {toggleDrawer(true)(); onSearch();}} size='large' variant="contained" endIcon={<SearchIcon />}>
                 Update & Search
             </Button>
             <SwipeableDrawer

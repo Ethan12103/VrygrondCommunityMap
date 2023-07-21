@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, CircularProgress } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
-import data from './FullOrgList.json';
+import data from './data/FullOrgNameList.json';
+import SwipeableEdgeDrawer from './ResultPanel';
 
 type ItemData = {
   Name: string;
@@ -11,10 +12,29 @@ type ItemData = {
 export default function SearchBox() {
   const [open, setOpen] = useState(false);
   const [orgData, setOrgData] = useState<ItemData[]>([]);
+  const [selectedOrg, setSelectedOrg] = useState("");
 
   useEffect(() => {
-    setOrgData(data);
+    // Transform the array of strings into an array of ItemData objects
+    const transformedData: ItemData[] = data.map((name) => ({ Name: name }));
+    setOrgData(transformedData);
   }, []);
+
+  async function sendOrgData() {
+    const response = await fetch('http://localhost:8000/searchByName', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ organization: selectedOrg }),
+    });
+  
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  
+    const data = await response.json();
+  }
 
   return (
     <div>
@@ -26,6 +46,11 @@ export default function SearchBox() {
         }}
         onClose={() => {
           setOpen(false);
+        }}
+        onChange={(event, newValue) => {
+          if (newValue !== null) {
+            setSelectedOrg(newValue);
+          }
         }}
         options={orgData.map((item) => item.Name)}
         renderInput={(params) => (
@@ -41,37 +66,11 @@ export default function SearchBox() {
                 </React.Fragment>
               ),
             }}
+            sx={{ height: '3rem', width: '24rem'  }}
           />
         )}
       />
-
-      <Autocomplete
-        id="service-search"
-        open={open}
-        onOpen={() => {
-          setOpen(true);
-        }}
-        onClose={() => {
-          setOpen(false);
-        }}
-        options={orgData.map((item) => item.Services || '')} // Ensure 'Services' is a string or use an empty string if it's undefined
-        loading={open && orgData.length === 0}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search services"
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <React.Fragment>
-                  {open && orgData.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
-                  {params.InputProps.endAdornment}
-                </React.Fragment>
-              ),
-            }}
-          />
-        )}
-      />
+      <SwipeableEdgeDrawer onSearch={sendOrgData} />
     </div>
   );
 }
