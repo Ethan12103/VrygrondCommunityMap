@@ -53,7 +53,9 @@ async function SearchByName() {
         // Define pipeline
         const agg = [
             // The string next to "query" needs to be input from the user
-            { $search: { text: { query: stringInput, path: "Name" } } },
+            {
+                $match: { Name: stringInput, },
+            },
             {
                 $project: {
                     _id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
