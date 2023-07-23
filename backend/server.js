@@ -115,7 +115,7 @@ async function main() {
         const agg = [
             // The string next to "query" needs to be input from the user
             {
-                $match: { Name: stringInput, },
+                $match: { "Services": stringInput, },
             },
             {
                 $project: {

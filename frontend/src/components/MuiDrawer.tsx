@@ -5,6 +5,7 @@ import { useState } from 'react';
 import RenderGroup from './SearchPanel';
 import { useTheme } from '@mui/system';
 import Box from '@mui/material/Box';
+import ServiceBox from './ServiceSearch';
 
 interface ImgMediaCardProps {
     setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
@@ -38,16 +39,31 @@ export const MuiDrawer = ({setPinLocation}: ImgMediaCardProps) => {
             >
                 <Box
                     sx={{
-                        display: 'flex',
+                        display: 'clear',
                         justifyContent: 'center',
                         position: 'absolute',
-                        top: '20%',
+                        top: '10%',
                         left: 0,
                         right: 0,
                         p: 1,
+                        marginBottom: '2rem'
                     }}
                 >
                     <RenderGroup setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
+                </Box>
+                <Box
+                    sx={{
+                        display: 'clear',
+                        justifyContent: 'center',
+                        position: 'absolute',
+                        top: '30%',
+                        left: 0,
+                        right: 0,
+                        p: 1,
+                        marginBottom: '2rem'
+                    }}
+                >
+                    <ServiceBox setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
                 </Box>
                 <Box
                     sx={{

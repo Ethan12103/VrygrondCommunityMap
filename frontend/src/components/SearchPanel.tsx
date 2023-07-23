@@ -70,7 +70,7 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
                 </React.Fragment>
               ),
             }}
-            sx={{ height: '3rem', width: '24rem'  }}
+            sx={{ height: '3rem', width: '24rem', marginBottom: '1rem'}}
           />
         )}
       />

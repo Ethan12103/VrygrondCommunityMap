@@ -90,7 +90,13 @@ export default function SwipeableEdgeDrawer({ onSearch, setPinLocation, setIsDra
                     },
                 }}
             />
-            <Button onClick={() => {toggleDrawer(true)(); onSearch();}} size='large' variant="contained" endIcon={<SearchIcon />}>
+            <Button 
+                onClick={() => {toggleDrawer(true)(); onSearch();}} 
+                size='large' 
+                variant="contained"
+                style={{ backgroundColor: 'black', color: 'white', width: '100%' }} // added this line
+                endIcon={<SearchIcon />}
+            >
                 Update & Search
             </Button>
             <SwipeableDrawer
