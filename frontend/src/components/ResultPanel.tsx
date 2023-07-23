@@ -25,6 +25,7 @@ type ItemData = {
     Website: string;
     Latitude: number;
     Longitude: number;
+    ['Image']: string;
 };
 
 const drawerBleeding = 56;

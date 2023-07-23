@@ -60,9 +60,9 @@ async function main() {
             },
             {
                 $project: {
-                    _id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
+                    _id: 0, Name: 1, "Services": 1,"Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
                     "Contact Number 2": 1, "Contact Persons": 1, "Email Address 1": 1, "Email Address 2": 1, Website: 1,
-                    Latitude: 1, Longitude: 1
+                    Latitude: 1, Longitude: 1, "Image": 1,
                 }
             }
 

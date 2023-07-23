@@ -41,14 +41,17 @@ export default function ImgMediaCard({ item }: itemProps) {
     item['Hours'] ||
     item['Email Address 1'] ||
     item['Email Address 2'] ||
+    item['Image'] ||
     item.Website;
 
   return isItemAvailable ? (
     <Card>
-      <CardMedia
-        sx={{ minHeight: '80px', minWidth: '100%' }}
-        image='https://static.wixstatic.com/media/770783_586964e6e955422da8a93dc8ab8b6156~mv2.jpg/v1/fill/w_891,h_238,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/BAP%20LOGO%202015%20slogan_open%20file%20no%20backgr.jpg'
-      />
+      {item['Image'] && (
+        <CardMedia
+          sx={{ minHeight: '80px', minWidth: '100%' }}
+          image={item['Image']}
+        />
+      )}
       <CardContent>
         {item['Services'] && (
           <div>
