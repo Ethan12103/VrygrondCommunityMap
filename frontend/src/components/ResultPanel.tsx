@@ -11,6 +11,22 @@ import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ControlledAccordions from './ControlledAccordions'
 
+type ItemData = {
+    Name: string;
+    ['Services']: string;
+    ['Address 1']: string;
+    ['Address 2']: string;
+    ['Contact Number 1']: string;
+    ['Contact Number 2']: string;
+    ['Contact Persons']: string;
+    ['Hours']: string;
+    ['Email Address 1']: string;
+    ['Email Address 2']: string;
+    Website: string;
+    Latitude: number;
+    Longitude: number;
+};
+
 const drawerBleeding = 56;
 
 const Root = styled('div')(({ theme }) => ({
@@ -41,10 +57,22 @@ export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerPro
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
+    const [data, setData] = React.useState<ItemData[]>([]);
 
-    const toggleDrawer = (newOpen: boolean) => () => {
+    const fetchData = async () => {
+        const response = await fetch('http://localhost:8000');
+        const data = await response.json();
+        setData(data);
+    };
+
+    const toggleDrawer = (newOpen: boolean) => async () => {
+        if(newOpen) {
+            await onSearch();
+            fetchData();
+        }
         setOpen(newOpen);
     };
+
     return (
         <Root>
             <CssBaseline />
@@ -94,7 +122,7 @@ export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerPro
                         overflow: 'auto',
                     }}
                 >
-                    <ControlledAccordions />
+                    <ControlledAccordions data={data} />
                 </StyledBox>
             </SwipeableDrawer>
         </Root>

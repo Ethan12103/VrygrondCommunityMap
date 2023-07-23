@@ -28,7 +28,7 @@ export default function SearchBox() {
       },
       body: JSON.stringify({ organization: selectedOrg }),
     });
-  
+    
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

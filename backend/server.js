@@ -99,6 +99,7 @@ async function main() {
         }
         */
     });
+    
     app.post('/searchByService', async (req, res) => {
         // Handle the incoming request and extract the string input
         const stringInput = req.body.organization;

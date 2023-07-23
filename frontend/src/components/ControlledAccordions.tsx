@@ -21,6 +21,8 @@ type ItemData = {
     ['Email Address 1']: string;
     ['Email Address 2']: string;
     Website: string;
+    Latitude: number;
+    Longitude: number;
 };
 
 const filterServices = (services: string[], maxLength: number) => {
@@ -31,18 +33,9 @@ const filterServices = (services: string[], maxLength: number) => {
 
 const ITEMS_PER_PAGE = 3;
 
-const ControlledAccordions = () => {
+const ControlledAccordions = ({ data }: { data: ItemData[] }) => {
     const [expanded, setExpanded] = useState<string | false>(false);
-    const [data, setData] = useState<ItemData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-
-    useEffect(() => {
-        fetch('http://localhost:8000')
-            .then((response) => response.json())
-            .then((data) => {
-                setData(data);
-            });
-    }, []);
 
     const handleChange = (panel: string) => (
         event: React.SyntheticEvent,
