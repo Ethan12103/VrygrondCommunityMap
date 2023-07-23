@@ -8,8 +8,12 @@ type ItemData = {
   Name: string;
   Services?: string; // Make 'Services' optional
 };
+interface ImgMediaCardProps {
+  setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
+  setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export default function SearchBox() {
+export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCardProps) {
   const [open, setOpen] = useState(false);
   const [orgData, setOrgData] = useState<ItemData[]>([]);
   const [selectedOrg, setSelectedOrg] = useState("");
@@ -70,7 +74,7 @@ export default function SearchBox() {
           />
         )}
       />
-      <SwipeableEdgeDrawer onSearch={sendOrgData} />
+      <SwipeableEdgeDrawer onSearch={sendOrgData} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
     </div>
   );
 }

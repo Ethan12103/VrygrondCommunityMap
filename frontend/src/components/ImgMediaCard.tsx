@@ -15,11 +15,14 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import PlaceIcon from '@mui/icons-material/Place';
 import Typography from '@mui/material/Typography';
 
-interface itemProps {
+interface ImgMediaCardProps {
   item: any;
+  setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
+  setIsResultsPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function ImgMediaCard({ item }: itemProps) {
+export default function ImgMediaCard({ item, setPinLocation, setIsResultsPanelOpen, setIsDrawerOpen }: ImgMediaCardProps) {
   const handlePhoneIconClick = (phoneNumber: string | number) => {
     const phoneString = String(phoneNumber); // Convert to string if it's a number
     // Removing non-numeric characters from the phone number
@@ -117,7 +120,11 @@ export default function ImgMediaCard({ item }: itemProps) {
       </CardContent>
       <CardActions>
         {item['Address 1'] || item['Address 2'] ? (
-          <IconButton aria-label='place' size='large'>
+          <IconButton aria-label='place' size='large' onClick={() => {
+            setPinLocation([item.Latitude, item.Longitude]);
+            setIsResultsPanelOpen(false);
+            setIsDrawerOpen(false);
+          }}>
             <PlaceIcon />
           </IconButton>
         ) : null}

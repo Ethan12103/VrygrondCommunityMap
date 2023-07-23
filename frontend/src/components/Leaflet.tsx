@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -10,13 +10,16 @@ import osm from './osm-providers';
 import L from 'leaflet';
 
 const center: [number, number] = [-34.083, 18.488];
-const position: [number, number] = [-34.0835, 18.48778];
 const markerIcon = new L.Icon({
   iconUrl: require('./images/marker.png'),
   iconSize: [22, 35],
 });
 
-export const LeafletMap: React.FC = () => {
+interface LeafletMapProps {
+  pinLocation: [number, number];
+}
+
+const LeafletMap: React.FC<LeafletMapProps> = ({ pinLocation }) => {
   return (
     <MapContainer
       center={center}
@@ -31,9 +34,10 @@ export const LeafletMap: React.FC = () => {
       }}
     >
       <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution} />
-      <Marker position={position} icon={markerIcon}>
+      <Marker position={pinLocation} icon={markerIcon}>
         <Popup>Vrygrond Community Center</Popup>
       </Marker>
     </MapContainer>
   );
 };
+export default LeafletMap;

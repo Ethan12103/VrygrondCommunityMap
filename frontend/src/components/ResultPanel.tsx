@@ -52,13 +52,16 @@ const Puller = styled(Box)(({ theme }) => ({
 
 interface SwipeableEdgeDrawerProps {
     onSearch: () => void;
+    setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
+    setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerProps) {
+export default function SwipeableEdgeDrawer({ onSearch, setPinLocation, setIsDrawerOpen }: SwipeableEdgeDrawerProps) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
     const [data, setData] = React.useState<ItemData[]>([]);
+    const [isResultsPanelOpen, setIsResultsPanelOpen] = React.useState(false);
 
     const fetchData = async () => {
         const response = await fetch('http://localhost:8000');
@@ -72,6 +75,8 @@ export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerPro
             fetchData();
         }
         setOpen(newOpen);
+        setIsResultsPanelOpen(newOpen);
+        setIsDrawerOpen(newOpen);
     };
 
     return (
@@ -90,7 +95,7 @@ export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerPro
             </Button>
             <SwipeableDrawer
                 anchor={'bottom'}
-                open={open}
+                open={isResultsPanelOpen}
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}
                 swipeAreaWidth={drawerBleeding}
@@ -123,7 +128,7 @@ export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerPro
                         overflow: 'auto',
                     }}
                 >
-                    <ControlledAccordions data={data} />
+                    <ControlledAccordions data={data} setPinLocation={setPinLocation} setIsResultsPanelOpen={setIsResultsPanelOpen} setIsDrawerOpen={setIsDrawerOpen}/>
                 </StyledBox>
             </SwipeableDrawer>
         </Root>

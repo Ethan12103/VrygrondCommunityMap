@@ -2,12 +2,15 @@ import { Drawer, useMediaQuery, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
-import ResultPanel from './ResultPanel';
 import RenderGroup from './SearchPanel';
 import { useTheme } from '@mui/system';
 import Box from '@mui/material/Box';
 
-export const MuiDrawer = () => {
+interface ImgMediaCardProps {
+    setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
+  }
+
+export const MuiDrawer = ({setPinLocation}: ImgMediaCardProps) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(true);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -44,7 +47,7 @@ export const MuiDrawer = () => {
                         p: 1,
                     }}
                 >
-                    <RenderGroup />
+                    <RenderGroup setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
                 </Box>
                 <Box
                     sx={{
