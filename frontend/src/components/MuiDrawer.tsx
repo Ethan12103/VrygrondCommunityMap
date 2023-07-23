@@ -57,7 +57,6 @@ export const MuiDrawer = () => {
                         p: 1,
                     }}
                 >
-                    <ResultPanel />
                 </Box>
                 <IconButton
                     size='large'

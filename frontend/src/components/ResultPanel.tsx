@@ -11,6 +11,22 @@ import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ControlledAccordions from './ControlledAccordions'
 
+type ItemData = {
+    Name: string;
+    ['Services']: string;
+    ['Address 1']: string;
+    ['Address 2']: string;
+    ['Contact Number 1']: string;
+    ['Contact Number 2']: string;
+    ['Contact Persons']: string;
+    ['Hours']: string;
+    ['Email Address 1']: string;
+    ['Email Address 2']: string;
+    Website: string;
+    Latitude: number;
+    Longitude: number;
+};
+
 const drawerBleeding = 56;
 
 const Root = styled('div')(({ theme }) => ({
@@ -33,14 +49,30 @@ const Puller = styled(Box)(({ theme }) => ({
     left: 'calc(50% - 15px)',
 }));
 
-export default function SwipeableEdgeDrawer() {
+interface SwipeableEdgeDrawerProps {
+    onSearch: () => void;
+}
+
+export default function SwipeableEdgeDrawer({ onSearch }: SwipeableEdgeDrawerProps) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
+    const [data, setData] = React.useState<ItemData[]>([]);
 
-    const toggleDrawer = (newOpen: boolean) => () => {
+    const fetchData = async () => {
+        const response = await fetch('http://localhost:8000');
+        const data = await response.json();
+        setData(data);
+    };
+
+    const toggleDrawer = (newOpen: boolean) => async () => {
+        if(newOpen) {
+            await onSearch();
+            fetchData();
+        }
         setOpen(newOpen);
     };
+
     return (
         <Root>
             <CssBaseline />
@@ -52,7 +84,7 @@ export default function SwipeableEdgeDrawer() {
                     },
                 }}
             />
-            <Button onClick={toggleDrawer(true)} size='large' variant="contained" endIcon={<SearchIcon />}>
+            <Button onClick={() => {toggleDrawer(true)(); onSearch();}} size='large' variant="contained" endIcon={<SearchIcon />}>
                 Update & Search
             </Button>
             <SwipeableDrawer
@@ -90,7 +122,7 @@ export default function SwipeableEdgeDrawer() {
                         overflow: 'auto',
                     }}
                 >
-                    <ControlledAccordions />
+                    <ControlledAccordions data={data} />
                 </StyledBox>
             </SwipeableDrawer>
         </Root>
