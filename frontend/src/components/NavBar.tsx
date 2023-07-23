@@ -1,14 +1,11 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import { Button, IconButton } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { MuiDrawer } from './MuiDrawer';
 import HelpPage from './HelpPage';
 import ProblemForm from './ProblemPage';
-import { styled, createTheme } from '@mui/material/styles';
 
 interface ImgMediaCardProps {
   setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
@@ -36,7 +33,6 @@ export const ButtonAppBar = ({ setPinLocation }: ImgMediaCardProps) => {
           }}>
             Vrygrond Trust Community Map
           </Typography>
-          <ProblemForm />
         </Toolbar>
       </AppBar>
     </Box>
