@@ -270,13 +270,11 @@ The development server will be running at `http://localhost:3000`.
 1. Launch MongoDB Compass and connect to mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn
    7r.mongodb.net/.
 
-   <img src="C:\Users\3Knig\AppData\Roaming\Typora\typora-user-images\image-20230724010127741.png" alt="image-20230724010127741" style="zoom: 50%;" />
+2. Once connected, select the OrganizationList collection.
 
-2. Once connected, select the OrganizationList collection. <img src="C:\Users\3Knig\AppData\Roaming\Typora\typora-user-images\image-20230724011256404.png" alt="image-20230724011256404" style="zoom: 33%;" />
+3. You will see a list of documents in the collection, each representing an organization. MongoDB Compass provides a user-friendly way to manage the data stored in the "OrganizationList" collection, making it easy to edit, copy, clone and delete organizations' information as needed.
 
-3. You will see a list of documents in the collection, each representing an organization. MongoDB Compass provides a user-friendly way to manage the data stored in the "OrganizationList" collection, making it easy to edit, copy, clone and delete <img src="C:\Users\3Knig\AppData\Roaming\Typora\typora-user-images\image-20230724011157167.png" alt="image-20230724011157167" style="zoom:33%;" /> organizations' information as needed.
-
-4. To make changes to an organization's details, you can edit the values directly in the JSON representation or switch and edit in table views <img src="C:\Users\3Knig\AppData\Roaming\Typora\typora-user-images\image-20230724011050912.png" alt="image-20230724011050912" style="zoom:33%;" />. Once you make the necessary changes, click the "UPDATE" button to update the document in the database.
+4. To make changes to an organization's details, you can edit the values directly in the JSON representation or switch and edit in table views. Once you make the necessary changes, click the "UPDATE" button to update the document in the database.
 
 5. To add a new organization, click on the "ADD DATA" button at the top left corner of the collection view. A new empty document will be created, and you can fill in the organization's details in the JSON format. You can import JSON or CSV files.
 
@@ -335,8 +333,6 @@ To access The Vrygrond Community Map, simply open your web browser and enter the
 #### 2.2 Supported Devices and Browsers
 
 The Vrygrond Community Map is compatible with most modern web browsers on both computers and mobile devices. We recommend using the latest versions of browsers like Google Chrome, Mozilla Firefox, Safari, or Microsoft Edge for the best experience.
-
-<img src="C:\Users\3Knig\AppData\Roaming\Typora\typora-user-images\image-20230724012848712.png" alt="image-20230724012848712" style="zoom: 50%;" />
 
 ### 3. Searching for Organizations
 
