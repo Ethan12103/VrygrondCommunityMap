@@ -33,7 +33,14 @@ const filterServices = (services: string[], maxLength: number) => {
 
 const ITEMS_PER_PAGE = 3;
 
-const ControlledAccordions = ({ data }: { data: ItemData[] }) => {
+type ControlledAccordionsProps = {
+    data: ItemData[];
+    setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
+    setIsResultsPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ControlledAccordions: React.FC<ControlledAccordionsProps> = ({ data, setPinLocation, setIsResultsPanelOpen, setIsDrawerOpen }) => {
     const [expanded, setExpanded] = useState<string | false>(false);
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -118,7 +125,7 @@ const ControlledAccordions = ({ data }: { data: ItemData[] }) => {
                             )}
                         </AccordionSummary>
                         <AccordionDetails key={`panel${index + 1}`} className='smooth-details'>
-                            <ImgMediaCard item={item} />
+                        <ImgMediaCard item={item} setPinLocation={setPinLocation} setIsResultsPanelOpen={setIsResultsPanelOpen} setIsDrawerOpen={setIsDrawerOpen} />
                         </AccordionDetails>
                     </Accordion>
                 );

@@ -1,11 +1,15 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import { LeafletMap } from './components/Leaflet';
+import LeafletMap from './components/Leaflet';
 import { ButtonAppBar } from './components/NavBar';
+import { useState, useEffect } from 'react';
 
+const defaultLat = -34.0835;
+const defaultLon = 18.48778;
 
 export default function App() {
+  const [pinLocation, setPinLocation] = useState<[number, number]>([defaultLat, defaultLon] as [number, number]);
   return (
     <Container maxWidth='xl'
       style={{
@@ -18,9 +22,9 @@ export default function App() {
         bottom: 0,
         zIndex: 0
       }}>
-      <ButtonAppBar />
+      <ButtonAppBar setPinLocation={setPinLocation} />
       <Box justifyContent='flex-end' sx={{ border: 1, borderColor: 'black' }}>
-        <LeafletMap />
+        <LeafletMap pinLocation={pinLocation} />
       </Box>
     </Container>
   );

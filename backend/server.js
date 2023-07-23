@@ -114,7 +114,9 @@ async function main() {
         // Define pipeline
         const agg = [
             // The string next to "query" needs to be input from the user
-            { $search: { text: { query: stringInput, path: "Services" } } },
+            {
+                $match: { Name: stringInput, },
+            },
             {
                 $project: {
                     _id: 0, Name: 1, "Address 1": 1, "Address 2": 1, "Contact Number 1": 1,
@@ -122,6 +124,7 @@ async function main() {
                     Latitude: 1, Longitude: 1
                 }
             }
+
         ];
 
         // Run pipeline
@@ -131,11 +134,12 @@ async function main() {
         
         while (await cursor.hasNext()) {
             const document = await cursor.next();
-            const documentArray = Object.values(document);
-            resultArray.push(documentArray);
+            resultArray.push(document);
         }
 
-        const results = JSON.stringify(resultArray);
+        latestResults = resultArray;
+
+        const results = JSON.stringify(latestResults);
 
         if (results.length > 0) {
             console.log("Sending results to port 8000");

@@ -10,12 +10,16 @@ import HelpPage from './HelpPage';
 import ProblemForm from './ProblemPage';
 import { styled, createTheme } from '@mui/material/styles';
 
-export const ButtonAppBar = () => {
+interface ImgMediaCardProps {
+  setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
+}
+
+export const ButtonAppBar = ({ setPinLocation }: ImgMediaCardProps) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' sx={{ color: 'white', backgroundColor: 'black' }}>
         <Toolbar>
-          <MuiDrawer />
+          <MuiDrawer setPinLocation={setPinLocation} />
           <HelpPage />
           <Typography variant='h6' component='div' sx={{
             flexGrow: 1,
