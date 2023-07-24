@@ -115,7 +115,8 @@ async function main() {
         const agg = [
             // The string next to "query" needs to be input from the user
             {
-                $match: { "Services": stringInput, },
+                $match: {
+                  Services: { $regex: stringInput, $options: "i" } } // "i" flag makes the search case-insensitive
             },
             {
                 $project: {
