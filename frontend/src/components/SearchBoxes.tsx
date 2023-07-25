@@ -17,6 +17,7 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
   const [open, setOpen] = useState(false);
   const [orgData, setOrgData] = useState<ItemData[]>([]);
   const [selectedOrg, setSelectedOrg] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     // Transform the array of strings into an array of ItemData objects
@@ -24,7 +25,7 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
     setOrgData(transformedData);
   }, []);
 
-  async function sendOrgData() {
+  async function sendOrgName() {
     const response = await fetch('http://localhost:8000/searchByName', {
       method: 'POST',
       headers: {
@@ -40,10 +41,26 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
     const data = await response.json();
   }
 
+  async function sendOrgService() {
+    const response = await fetch('http://localhost:8000/searchByService', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ organization: inputValue }),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  
+    const data = await response.json();
+  }
+
   return (
     <div>
       <Autocomplete
-        id="org-search"
+        id="org-name-search"
         open={open}
         onOpen={() => {
           setOpen(true);
@@ -74,7 +91,41 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
           />
         )}
       />
-      <SwipeableEdgeDrawer onSearch={sendOrgData} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
+      <Autocomplete
+          disablePortal
+          id="org-service-search"
+          options={topServices}
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
+          renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '100%', marginBottom: '1rem'}}/>}
+        />
+      <SwipeableEdgeDrawer onSearch={sendOrgName} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
     </div>
   );
 }
+const labels = [
+  "Health",
+  "Medical",
+  "Art therapy",
+  "After school programs",
+  "children",
+  "Abused women",
+  "Vulnerable children",
+  "School",
+  "Education",
+  "Volunteer",
+  "Work",
+  "Lifeskills",
+  "Legal aid",
+  "Work",
+  "ECD",
+  "Mentoring",
+  "LGBTQ+",
+  "Shelter",
+  "Employment",
+  "Literacy/numeracy programs",
+  "College prep",
+  "Music",
+];
+const topServices = labels.map((label) => ({ label }));  

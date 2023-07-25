@@ -2,10 +2,9 @@ import { Drawer, useMediaQuery, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
-import RenderGroup from './SearchPanel';
+import RenderGroup from './SearchBoxes';
 import { useTheme } from '@mui/system';
 import Box from '@mui/material/Box';
-import ServiceBox from './ServiceSearch';
 
 interface ImgMediaCardProps {
     setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
@@ -63,7 +62,6 @@ export const MuiDrawer = ({setPinLocation}: ImgMediaCardProps) => {
                         marginBottom: '2rem'
                     }}
                 >
-                    <ServiceBox setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
                 </Box>
                 <Box
                     sx={{
