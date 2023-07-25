@@ -8,7 +8,9 @@
 
    <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/1.png?raw=true" style="zoom: 50%;" />
 
-2. Once connected, select the **OrganizationList**. <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/2.png?raw=true" style="zoom: 33%;" />
+2. Once connected, select the **OrganizationList**.
+
+   <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/2.png?raw=true" style="zoom: 33%;" />
 
 3. You will see a list of documents in the collection, each representing an organization. MongoDB Compass provides a user-friendly way to manage the data stored in the "**OrganizationList**", making it easy to edit, copy, clone and delete <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/3.png?raw=true" style="zoom:33%;" /> organizations' information as needed.
 
@@ -33,7 +35,7 @@
        "Contact Persons": "John Doe",
        "Email Address 1": "one@example.com",
        "Email Address 2": "two@example.com",
-       "Website": "https://example.com,
+       "Website": "https://example.com",
        "Services": "medicine, health, clinic, care",
        "Hours": "Mo-Fri 9am-6pm",
        "Longitude": 18.4815307,
@@ -42,7 +44,7 @@
      }
      ```
 
-     Click on "**ADD DATA**", then "**Insert Document**". <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/8.png" alt="image-20230725224151487" style="zoom:33%;" />
+     Click on "**ADD DATA**", then "**Insert Document**". <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/8.png" style="zoom:33%;" />
 
    - **Import CSV table file**:
 
@@ -52,7 +54,13 @@
 
      <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/7.png" style="zoom: 50%;" />
 
-5. To make changes to an organization's details, you can edit in **list**<img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/4.png" style="zoom:33%;" />,  **JSON** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/5.png" style="zoom:33%;" /> or **table** views <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/6.png?raw=true" style="zoom:33%;" />. Once you make the necessary changes, click the "**UPDATE**" button to update the document in the database.
+5. To make changes to an organization's details, you can edit in
+
+   - **List** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/4.png" style="zoom:33%;" />
+   - **JSON** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/5.png" style="zoom:33%;" /> 
+   - **Table** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/6.png?raw=true" style="zoom:33%;" />. 
+
+   Once you make the necessary changes, click the "**UPDATE**" button to update the document in the database.
 
 Remember to exercise caution when making changes to the data, as any modifications will directly affect the information displayed on the Vrygrond Community Map website. It is also essential to ensure the data remains consistent and accurate for the benefit of the Vrygrond community members. For larger scale edit and database management, use a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account obtained from the site administrator.
 
