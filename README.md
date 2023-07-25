@@ -267,8 +267,7 @@ The development server will be running at `http://localhost:3000`.
 }
 ```
 
-1. Launch MongoDB Compass and connect to mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn
-   7r.mongodb.net/.
+1. Launch MongoDB Compass and connect to mongodb+srv://**.**.mongodb.net/.
 
 2. Once connected, select the OrganizationList collection.
 
