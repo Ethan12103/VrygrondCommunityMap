@@ -25,7 +25,7 @@ interface ImgMediaCardProps {
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCardProps) {
+export default function SearchBox({ setPinLocation, setIsDrawerOpen }: ImgMediaCardProps) {
   const [open, setOpen] = useState(false);
   const [orgData, setOrgData] = useState<ItemData[]>([]);
   const [selectedOrg, setSelectedOrg] = useState("");
@@ -45,11 +45,11 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
       },
       body: JSON.stringify({ organization: selectedOrg }),
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-  
+
     const data = await response.json();
   }
 
@@ -61,11 +61,11 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
       },
       body: JSON.stringify({ organization: inputValue }),
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-  
+
     const data = await response.json();
   }
   async function sendData() {
@@ -83,23 +83,23 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
   return (
     <div>
       <Typography variant='h1' fontSize={16} fontWeight={'bold'} gutterBottom marginBottom={'1rem'}>
-          Search by Organization Name
+        Search by Organization Name
       </Typography>
       <Autocomplete
         id="org-name-search"
-        open={open}
+        open={open && !inputValue}
         onOpen={() => {
           setOpen(true);
         }}
         onClose={() => {
           setOpen(false);
         }}
-        onChange={(event, newValue) => {
-          if (newValue !== null) {
-            setSelectedOrg(newValue);
-          }
+        onChange={(event, newValue: string | null) => {
+          setSelectedOrg(newValue || '');
+          if (newValue) setInputValue('');
         }}
         options={orgData.map((item) => item.Name)}
+        disabled={!!inputValue}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -113,23 +113,27 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
                 </React.Fragment>
               ),
             }}
-            sx={{ height: '3rem', width: '100%', marginBottom: '2rem'}}
+            sx={{ height: '3rem', width: '100%', marginBottom: '2rem' }}
           />
         )}
       />
       <Typography variant='h1' fontSize={16} fontWeight={'bold'} gutterBottom marginBottom={'1rem'}>
-          Search by Services Provided
+        Search by Services Provided
       </Typography>
       <Autocomplete
-          disablePortal
-          id="org-service-search"
-          options={topServices}
-          onInputChange={(event, newInputValue) => {
-            setInputValue(newInputValue);
-          }}
-          renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '100%', marginBottom: '2rem'}}/>}
-        />
-      <SwipeableEdgeDrawer onSearch={sendData} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
+        disablePortal
+        id="org-service-search"
+        options={topServices}
+        onChange={(event, newInputValue: any) => {
+          if (newInputValue) {
+            setSelectedOrg('');
+          }
+          setInputValue(newInputValue ? newInputValue.label : '');
+        }}
+        disabled={!!selectedOrg}
+        renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '100%', marginBottom: '2rem' }} />}
+      />
+      <SwipeableEdgeDrawer onSearch={sendData} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen} />
     </div>
   );
 }
