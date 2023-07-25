@@ -3,11 +3,23 @@ import { TextField, CircularProgress } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import data from './data/FullOrgNameList.json';
 import SwipeableEdgeDrawer from './ResultPanel';
+import Typography from '@mui/material/Typography';
+import { styled, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      '-apple-system',
+    ].join(','),
+    fontSize: 12,
+  },
+});
 
 type ItemData = {
   Name: string;
   Services?: string; // Make 'Services' optional
 };
+
 interface ImgMediaCardProps {
   setPinLocation: React.Dispatch<React.SetStateAction<[number, number]>>;
   setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -57,16 +69,22 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
     const data = await response.json();
   }
   async function sendData() {
-    if (selectedOrg.trim()) {
-      await sendOrgName();
-    }
-    
-    if (inputValue.trim()) {
+    if (!selectedOrg.trim() && !inputValue.trim()) {
       await sendOrgService();
+    } else {
+      if (selectedOrg.trim()) {
+        await sendOrgName();
+      }
+      if (inputValue.trim()) {
+        await sendOrgService();
+      }
     }
   }
   return (
     <div>
+      <Typography variant='h1' fontSize={16} fontWeight={'bold'} gutterBottom marginBottom={'1rem'}>
+          Search by Organization Name
+      </Typography>
       <Autocomplete
         id="org-name-search"
         open={open}
@@ -95,10 +113,13 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
                 </React.Fragment>
               ),
             }}
-            sx={{ height: '3rem', width: '100%', marginBottom: '1rem'}}
+            sx={{ height: '3rem', width: '100%', marginBottom: '2rem'}}
           />
         )}
       />
+      <Typography variant='h1' fontSize={16} fontWeight={'bold'} gutterBottom marginBottom={'1rem'}>
+          Search by Services Provided
+      </Typography>
       <Autocomplete
           disablePortal
           id="org-service-search"
@@ -106,7 +127,7 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
           }}
-          renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '100%', marginBottom: '1rem'}}/>}
+          renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '100%', marginBottom: '2rem'}}/>}
         />
       <SwipeableEdgeDrawer onSearch={sendData} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
     </div>
@@ -117,7 +138,7 @@ const labels = [
   "Medical",
   "Art therapy",
   "After school programs",
-  "children",
+  "Children",
   "Abused women",
   "Vulnerable children",
   "School",
