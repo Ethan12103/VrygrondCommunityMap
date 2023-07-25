@@ -56,7 +56,15 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
   
     const data = await response.json();
   }
-
+  async function sendData() {
+    if (selectedOrg.trim()) {
+      await sendOrgName();
+    }
+    
+    if (inputValue.trim()) {
+      await sendOrgService();
+    }
+  }
   return (
     <div>
       <Autocomplete
@@ -100,7 +108,7 @@ export default function SearchBox({setPinLocation, setIsDrawerOpen}: ImgMediaCar
           }}
           renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '100%', marginBottom: '1rem'}}/>}
         />
-      <SwipeableEdgeDrawer onSearch={sendOrgName} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
+      <SwipeableEdgeDrawer onSearch={sendData} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
     </div>
   );
 }
