@@ -13,6 +13,7 @@ This instruction is for deployment only for novice users on windows. To manage d
    There's a library of the project online. To fetch a copy:
 
    - Visit this site: <https://github.com/VrygrondCommunityGitHub/BAP.git>
+
    - Look for an option that lets you "Clone" or "Download". This will get you the necessary files.
 
 3. Access the Project's Files:
@@ -30,5 +31,7 @@ This instruction is for deployment only for novice users on windows. To manage d
 5. Run the server:
 
    1. Open '**start_server**.bat'.
+
    2. Open '**start_client**.bat'.
+
    3. To close, click on each terminal window, press **Ctrl + C** and confirm.
