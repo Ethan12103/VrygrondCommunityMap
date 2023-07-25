@@ -4,15 +4,15 @@
 
 ##### Priscilla Jordan, Ethan Fan, Bailey Ballard, Yijia Zhao
 
+[Easy Deployment](https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/Deployment%20Instructions.md)
+
+[Easy Maintenance](https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/Maintenance%20Instructions.md)
+
 #### CIS4930
 
 #### Vrygrond Community Trust Development / Butterfly Arts Project
 
 #### Dr. Sanethia Thomas 
-
-
-
-
 
 
 
