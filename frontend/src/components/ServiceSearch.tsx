@@ -37,8 +37,7 @@ export default function ServiceBox({setPinLocation, setIsDrawerOpen}: ImgMediaCa
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
           }}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '24rem', marginBottom: '1rem'}}/>}
+          renderInput={(params) => <TextField {...params} label="Search Service?" sx={{ height: '3rem', width: '100%', marginBottom: '1rem'}}/>}
         />
         <SwipeableEdgeDrawer onSearch={sendOrgData} setPinLocation={setPinLocation} setIsDrawerOpen={setIsDrawerOpen}/>
       </div>
@@ -50,7 +49,7 @@ const labels = [
     "Medical",
     "Art therapy",
     "After school programs",
-    "Children",
+    "children",
     "Abused women",
     "Vulnerable children",
     "School",
