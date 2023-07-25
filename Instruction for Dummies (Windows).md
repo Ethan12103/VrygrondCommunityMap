@@ -1,4 +1,4 @@
-Instruction to Deploy and Maintain for Dummies (Windows System)
+Instruction to Deploy and Maintain (Windows System)
 
 1. Install Necessary Software:
 
