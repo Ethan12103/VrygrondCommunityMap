@@ -19,7 +19,8 @@ Instruction to Deploy and Maintain for Dummies (Windows System)
    
 4. Setting up (Only Once):
 
-   - Inside the 'BAP' folder, double click 'install.bat'.
+   - Inside the 'BAP' folder, double click 'install_frontend.bat'.
+   - Inside the 'BAP' folder, double click 'install_backend.bat'.
    - Inside the 'BAP' folder, double click 'build.bat'.
    
 5. Run the server:
