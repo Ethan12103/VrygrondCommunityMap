@@ -7,12 +7,17 @@ This instruction is for deployment only for novice users on windows. To manage d
    You will need a specific software to use this application:
 
    - Node.js: Visit the website and download the software using this link [Node.js](https://nodejs.org/)
+   - Viscual Studuo Code: Visit the website and download the application using this link (https://code.visualstudio.com/download)
 
 2. Copying the Project:
 
    There's a library of the project online. To fetch a copy:
 
    - Visit this site: <https://github.com/VrygrondCommunityGitHub/BAP.git>
+   - This is a private repository so you will need a GitHub account and then to request access from Chrisitan (kayemba29@gmail.com)
+   - Open Visual Studio Code and open a new terminal
+   
+
 
    - Look for an option that lets you "Clone" or "Download". This will get you the necessary files.
 
