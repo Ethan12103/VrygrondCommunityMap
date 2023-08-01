@@ -2,9 +2,11 @@
 
 #### BAP Group
 
-##### Priscilla Jordan, Ethan Fan, Bailey Ballard, Yijia Zhao
+##### Yijia Zhao, Priscilla Jordan, Ethan Fan, Bailey Ballard
 
-[Easy Deployment](https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/Deployment%20Instructions.md)
+This demo is running at [vrygrond.zy-j.com](https://vrygrond.zy-j.com)
+
+This file is also at [vrygrond.zy-j.com/README](vrygrond.zy-j.com/README)
 
 [Easy Maintenance](https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/Maintenance%20Instructions.md)
 
@@ -41,7 +43,6 @@
     - [Frontend](#frontend)
     - [MongoDB Compass](#mongodb-compass)
 5. [Future Work](#future-work)
-6. [Biography](#biography)
 7. [Appendix: User Guide for The Vrygrond Community Map](#appendix)
 
 ## Abstract <a name="abstract"></a>
@@ -289,16 +290,6 @@ While The Vrygrond Community Map provides a robust solution for searching organi
 - Improving website responsiveness for various devices.
 
 There are no known issues with the code at this time, but there are potential bugs on the backend and database that are difficult to manage. The database is a huge component of this project since the website relies on it. Outdated addresses, limited keywords, and missing contact information are something that our team could not fully tackle on this trip.
-
-## Biography <a name="biography"></a>
-
-This project was sponsored by EDU Africa in partnership with the University of Florida. Four students were responsible for starting and completing this project: Bailey Ballard, Ethan Fan, Priscilla Jordan, and Yijia Zhao. The professor in charge of the study abroad was Dr. Sanethia Thomas, and the TA for the course was Ekin Atay.
-
-- Sanethia Thomas, PhD, University of Florida, Computer & Information Science & Engineering, [sanethiat@ufl.edu](mailto:sanethiat@ufl.edu)
-- Bailey Ballard (bballard1@ufl.edu) is a graduate student at the University of Florida studying Computer and Electrical Engineering. She recently completed her bachelor’s in Electrical Engineering at UF and graduates in August. This is her first study abroad and hopes to travel more in the future. Her main focus on the project was the database in MongoDB and the connection with Node.js. 
-- Yijia Zhao ([zhao.yijia@ufl.edu](mailto:zhao.yijia@ufl.edu)) is an incoming junior majoring in Computer Science / Digital Arts and Sciences. He is an international student born in Shanghai, China, and is interested in software engineering, multimedia development, UI/UX and art. He interned under Dr. Thomas’s supervision earlier in 2023. In this project, he serves as the scrum master and project manager, managing the whole tech stack while also building frontend components, and connecting frontend to backend.
-- Ethan Fan ([efan@ufl.edu](mailto:efan@ufl.edu)) is an incoming junior majoring in Computer Science with a minor in Mathematics through the College of Engineering. He is passionate about traveling and helping people and hopes that his software solutions will make a change in the world. In this project, he served as the lead frontend engineer, designing and developing the features of the website. He also connected frontend and backend components to make the search and map functionalities work.
-- Priscilla Jordan ([priscillajordan@ufl.edu](mailto:priscillajordan@ufl.edu)) is a 4th year undergraduate student at the University of Florida. She is majoring in Computer Science through the College of Liberal Arts and Science. She completed her Associates Degree at Broward College in 2020. Priscilla was born in Rio de Janeiro, Brazil. She is passionate about travel, educational technology, and artificial intelligence. Her responsibilities during this project include front-end paired programming with Ethan Fan, communication with the client and interested parties, backend database organization, local community research, and facilitation of group communication.
 
 ## Appendix: User Guide for The Vrygrond Community Map <a name="appendix"></a>
 
