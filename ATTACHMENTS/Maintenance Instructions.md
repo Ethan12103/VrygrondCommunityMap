@@ -4,13 +4,13 @@
 
 1. Launch MongoDB Compass and connect to mongodb+srv://***.mongodb.net/.
 
-   <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/1.png?raw=true" style="zoom: 50%;" />
+   <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/1.png?raw=true" style="zoom: 50%;" />
 
 2. Once connected, select the **OrganizationList**.
 
-   <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/2.png?raw=true" style="zoom: 33%;" />
+   <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/2.png?raw=true" style="zoom: 33%;" />
 
-3. You will see a list of documents in the collection, each representing an organization. MongoDB Compass provides a user-friendly way to manage the data stored in the "**OrganizationList**", making it easy to edit, copy, clone and delete <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/3.png?raw=true" style="zoom:33%;" /> organizations' information as needed.
+3. You will see a list of documents in the collection, each representing an organization. MongoDB Compass provides a user-friendly way to manage the data stored in the "**OrganizationList**", making it easy to edit, copy, clone and delete <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/3.png?raw=true" style="zoom:33%;" /> organizations' information as needed.
 
 4. To add a new organization, click on the "**ADD DATA**" button at the top left corner of the collection view. A new empty document will be created, and you can fill in the organization's details in the JSON format. You can import JSON or CSV files.
 
@@ -41,7 +41,7 @@
      }
      ```
 
-     Click on "**ADD DATA**", then "**Insert Document**". <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/8.png" style="zoom:33%;" />
+     Click on "**ADD DATA**", then "**Insert Document**". <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/8.png" style="zoom:33%;" />
 
    - **Import CSV table file**:
 
@@ -49,13 +49,13 @@
 
      In MongoDB Compass. Click on "**ADD DATA**", then "**Import JSON or CSV file**". Select the csv file as "**Import file**", then click "**Import**".
 
-     <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/7.png" style="zoom: 50%;" />
+     <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/7.png" style="zoom: 50%;" />
 
 5. To make changes to an organization's details, you can edit in
 
-   - **List** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/4.png" style="zoom:33%;" />
-   - **JSON** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/5.png" style="zoom:33%;" />
-   - **Table** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/6.png?raw=true" style="zoom:33%;" />.
+   - **List** <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/4.png" style="zoom:33%;" />
+   - **JSON** <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/5.png" style="zoom:33%;" />
+   - **Table** <img src="https://github.com/Yijia-Z/vrygrond/blob/main/ATTACHMENTS/6.png?raw=true" style="zoom:33%;" />.
 
    Once you make the necessary changes, click the "**UPDATE**" button to update the document in the database.
 
