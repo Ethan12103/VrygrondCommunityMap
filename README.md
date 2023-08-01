@@ -6,7 +6,7 @@
 
 This demo is running at [vrygrond.zy-j.com](https://vrygrond.zy-j.com)
 
-This file is also at [vrygrond.zy-j.com/README](vrygrond.zy-j.com/README)
+This file is also at [vrygrond.zy-j.com/README.html](vrygrond.zy-j.com/README.html)
 
 [Easy Maintenance](https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/Maintenance%20Instructions.md)
 
