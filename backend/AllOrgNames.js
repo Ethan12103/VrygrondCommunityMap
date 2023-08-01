@@ -4,6 +4,7 @@ const { MongoClient } = require("mongodb");
 const express = require("express");
 const app = express();
 const fs = require('fs');
+require('dotenv').config({ path: `.env.local`, override: true });
 
 // Add body-parser middleware to parse incoming request bodies
 app.use(express.text());
