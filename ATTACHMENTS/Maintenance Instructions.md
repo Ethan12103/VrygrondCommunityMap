@@ -2,7 +2,6 @@
 
 [MongoDB Compass](https://www.mongodb.com/try/download/compass) is a graphical user interface (GUI) tool used for interacting with the MongoDB database, viewing data, and managing collections.
 
-
 1. Launch MongoDB Compass and connect to mongodb+srv://***.mongodb.net/.
 
    <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/1.png?raw=true" style="zoom: 50%;" />
@@ -15,8 +14,7 @@
 
 4. To add a new organization, click on the "**ADD DATA**" button at the top left corner of the collection view. A new empty document will be created, and you can fill in the organization's details in the JSON format. You can import JSON or CSV files.
 
-
-   - **Insert single JSON**: 
+   - **Insert single JSON**:
 
      Copy and edit the following, and delete the lines with no information:
 
@@ -56,33 +54,11 @@
 5. To make changes to an organization's details, you can edit in
 
    - **List** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/4.png" style="zoom:33%;" />
-   - **JSON** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/5.png" style="zoom:33%;" /> 
-   - **Table** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/6.png?raw=true" style="zoom:33%;" />. 
+   - **JSON** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/5.png" style="zoom:33%;" />
+   - **Table** <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/6.png?raw=true" style="zoom:33%;" />.
 
    Once you make the necessary changes, click the "**UPDATE**" button to update the document in the database.
 
 Remember to exercise caution when making changes to the data, as any modifications will directly affect the information displayed on the Vrygrond Community Map website. It is also essential to ensure the data remains consistent and accurate for the benefit of the Vrygrond community members. For larger scale edit and database management, use a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account obtained from the site administrator.
 
-Users can email admin@vrygrond.co.za for updates or changes that need to be made for the website. 
-
-### Login credentials (ONLY ADMINS):
-
-#### Github Login:
-
-Email: [kayemba29@gmail.com](mailto:kayemba29@gmail.com)
-
-Password: VrygrondTrust23
-
-Username: VrygrondCommunityGitHub
-
-#### MongoDB Atlas:
-
-Email: [kayemba29@gmail.com](mailto:kayemba29@gmail.com)
-
-Password: VrygrondTrust23
-
-Cluster Name: Cluster0
-
-Username: kayemba29
-
-Password: VrygrondTrust29
+Users can email <admin@vrygrond.co.za> for updates or changes that need to be made for the website.
