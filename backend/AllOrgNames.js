@@ -8,7 +8,7 @@ const fs = require('fs');
 // Add body-parser middleware to parse incoming request bodies
 app.use(express.text());
 
-const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 async function ReturnAllOrgNames() {

@@ -3,8 +3,7 @@
 [MongoDB Compass](https://www.mongodb.com/try/download/compass) is a graphical user interface (GUI) tool used for interacting with the MongoDB database, viewing data, and managing collections.
 
 
-1. Launch MongoDB Compass and connect to mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn
-   7r.mongodb.net/.
+1. Launch MongoDB Compass and connect to mongodb+srv://***.mongodb.net/.
 
    <img src="https://github.com/VrygrondCommunityGitHub/BAP/blob/main/ATTACHMENTS/1.png?raw=true" style="zoom: 50%;" />
 
