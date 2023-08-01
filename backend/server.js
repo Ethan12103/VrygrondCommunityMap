@@ -1,8 +1,4 @@
 /* 
-    Name: Bailey Ballard
-    University of Florida
-    Date: 7/19/2023
-
     This file has 2 functions
 
     1. SearchByName() 
@@ -172,7 +168,7 @@ async function main() {
         }
     });
     app.listen(PORT, () => {
-        console.log(`Server is running at http://localhost:${port}`);
+        console.log(`Server is running at http://localhost:${{PORT}}`);
     });
 }
 

@@ -1,8 +1,4 @@
 /*
-    Name: Bailey Ballard
-    University of Florida
-    Date: 7/11/2023
-
     Description: This file has two functions
 
     1. run()
