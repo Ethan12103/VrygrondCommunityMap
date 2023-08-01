@@ -24,7 +24,7 @@ const { MongoClient } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 8000;
+const PORT = process.env.PORT || 8000;
 const fs = require('fs');
 app.use(cors());
 require('dotenv').config({ path: `.env.local`, override: true });
@@ -171,7 +171,7 @@ async function main() {
             res.send("No results yet");
         }
     });
-    app.listen(port, () => {
+    app.listen(PORT, () => {
         console.log(`Server is running at http://localhost:${port}`);
     });
 }
