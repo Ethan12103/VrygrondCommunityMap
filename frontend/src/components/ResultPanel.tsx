@@ -64,7 +64,7 @@ export default function SwipeableEdgeDrawer({ onSearch, setPinLocation, setIsDra
     const [isResultsPanelOpen, setIsResultsPanelOpen] = React.useState(false);
 
     const fetchData = async () => {
-        const response = await fetch('http://localhost:8000');
+        const response = await fetch('https://bap-backend-4394596572af.herokuapp.com/');
         const data = await response.json();
         setData(data);
     };

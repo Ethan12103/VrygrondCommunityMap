@@ -38,7 +38,7 @@ export default function SearchBox({ setPinLocation, setIsDrawerOpen }: ImgMediaC
   }, []);
 
   async function sendOrgName() {
-    const response = await fetch('http://localhost:8000/searchByName', {
+    const response = await fetch('https://bap-backend-4394596572af.herokuapp.com/searchByName', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export default function SearchBox({ setPinLocation, setIsDrawerOpen }: ImgMediaC
   }
 
   async function sendOrgService() {
-    const response = await fetch('http://localhost:8000/searchByService', {
+    const response = await fetch('https://bap-backend-4394596572af.herokuapp.com/searchByService', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
