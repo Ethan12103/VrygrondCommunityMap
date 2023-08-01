@@ -25,9 +25,10 @@ const cors = require("cors");
 const app = express();
 const fs = require('fs');
 app.use(cors());
+require('dotenv').config({ path: `.env.local`, override: true });
 
 // Connect to your Atlas clusterv
-const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 

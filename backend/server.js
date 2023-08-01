@@ -20,7 +20,6 @@
     See results printed to http://localhost:8000/
 
 */
-
 const { MongoClient } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
@@ -28,11 +27,11 @@ const app = express();
 const port = 8000;
 const fs = require('fs');
 app.use(cors());
-
+require('dotenv').config({ path: `.env.local`, override: true });
 // Add body-parser middleware to parse incoming request bodies
 app.use(express.json());
 
-const uri = "mongodb+srv://VrygrondTrust:ButterflyArtsProject@vrygrondcommunity.donyn7r.mongodb.net/";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 async function main() {
